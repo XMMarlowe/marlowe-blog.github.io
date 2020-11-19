@@ -3,7 +3,7 @@ title: Leetcode组合总和1-4题题解
 author: Marlowe
 date: 2020-10-12 21:52:22
 tags: Leetcode
-categories: 题解
+categories: LeetCode题解
 ---
 
 ### Leetcode组合总和1-4题题解
