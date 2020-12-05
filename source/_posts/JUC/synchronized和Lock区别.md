@@ -1,12 +1,13 @@
 ---
 title: synchronized和Lock区别
 author: Marlowe
-date: 2020-12-02 22:19:29
-tags: 
-    - 多线程
-    - Java
-    - 锁
+tags:
+  - 多线程
+  - Java
+  - 锁
 categories: JUC
+abbrlink: 48506
+date: 2020-12-02 22:19:29
 ---
 简述 synchronized 和 Lock 区别...
 <!--more-->
