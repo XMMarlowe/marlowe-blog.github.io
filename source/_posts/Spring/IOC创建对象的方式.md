@@ -1,12 +1,13 @@
 ---
 title: IOC创建对象的方式
 author: Marlowe
-date: 2020-12-04 21:02:41
 tags:
-    - IOC
-    - Spring
+  - IOC
+  - Spring
 categories: Spring
+date: 2020-12-04 21:02:41
 ---
+
 IOC创建对象的三种方式...
 <!--more-->
 

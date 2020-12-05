@@ -1,9 +1,10 @@
 ---
 title: Map集合的统计每个字符出现次数的两种方法
 author: Marlowe
-date: 2020-10-12 21:53:51
 tags: HashMap
 categories: LeetCode题解
+abbrlink: 24114
+date: 2020-10-12 21:53:51
 ---
 
 ### Map集合的统计每个字符出现次数的两种方法
