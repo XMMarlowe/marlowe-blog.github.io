@@ -1,11 +1,12 @@
 ---
 title: Rest风格操作
 author: Marlowe
-date: 2020-12-08 12:24:51
 tags:
-    - Resuful
-    - ES
+  - Resuful
+  - ES
 categories: ElasticSearch
+abbrlink: 26163
+date: 2020-12-08 12:24:51
 ---
 <!--more-->
 

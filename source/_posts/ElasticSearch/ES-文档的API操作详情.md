@@ -1,12 +1,13 @@
 ---
 title: ES 文档的API操作详情
 author: Marlowe
-date: 2020-12-08 19:16:02
 tags:
-    - ES
-    - SpringBoot
-    - API
+  - ES
+  - SpringBoot
+  - API
 categories: ElasticSearch
+abbrlink: 64325
+date: 2020-12-08 19:16:02
 ---
 
 ...
