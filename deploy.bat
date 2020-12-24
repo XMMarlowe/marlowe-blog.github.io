@@ -9,3 +9,5 @@ git commit -m "update..."
 git pull HexoBlog master
 git push HexoBlog master
 
+call hexo g
+hexo d

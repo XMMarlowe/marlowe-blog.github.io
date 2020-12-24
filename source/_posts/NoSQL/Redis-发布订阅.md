@@ -1,4 +1,7 @@
 ---
+abbrlink: 15789
+---
+---
 title: Redis 发布订阅
 author: Marlowe
 date: 2020-12-24 15:22:32
