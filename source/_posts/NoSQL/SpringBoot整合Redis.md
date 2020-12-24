@@ -1,11 +1,12 @@
 ---
 title: SpringBoot整合Redis
 author: Marlowe
-date: 2020-12-23 21:59:54
 tags:
-    - Redis
-    - SpringBoot
+  - Redis
+  - SpringBoot
 categories: NoSQL
+abbrlink: 13813
+date: 2020-12-23 21:59:54
 ---
 <!--more-->
 

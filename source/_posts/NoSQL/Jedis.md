@@ -1,11 +1,12 @@
 ---
 title: Jedis
 author: Marlowe
-date: 2020-12-23 21:19:43
 tags:
-    - Redis
-    - Jedis
+  - Redis
+  - Jedis
 categories: NoSQL
+abbrlink: 26793
+date: 2020-12-23 21:19:43
 ---
 ...
 <!--more-->
