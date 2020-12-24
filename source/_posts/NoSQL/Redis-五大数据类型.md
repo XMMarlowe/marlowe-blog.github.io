@@ -1,11 +1,12 @@
 ---
 title: Redis 五大数据类型
 author: Marlowe
-date: 2020-12-19 17:10:33
 tags:
-    - Redis
-    - 数据类型
+  - Redis
+  - 数据类型
 categories: NoSQL
+abbrlink: 1395
+date: 2020-12-19 17:10:33
 ---
 Redis 五大数据类型详述...
 <!--more-->

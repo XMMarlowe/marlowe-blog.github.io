@@ -1,11 +1,12 @@
 ---
 title: Redis 三种特殊数据类型
 author: Marlowe
-date: 2020-12-20 10:58:35
 tags:
-    - Redis
-    - 数据类型
+  - Redis
+  - 数据类型
 categories: NoSQL
+abbrlink: 28237
+date: 2020-12-20 10:58:35
 ---
 Radis 三种特殊数据类型...
 <!--more-->

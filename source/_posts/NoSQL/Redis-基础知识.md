@@ -1,10 +1,11 @@
 ---
 title: Redis 基础知识
 author: Marlowe
-date: 2020-12-19 16:19:14
 tags:
-    - Redis
+  - Redis
 categories: NoSQL
+abbrlink: 51737
+date: 2020-12-19 16:19:14
 ---
 Redis 基础知识
 <!--more-->
