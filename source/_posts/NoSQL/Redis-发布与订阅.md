@@ -1,13 +1,11 @@
 ---
-abbrlink: 15789
----
----
-title: Redis 发布订阅
+title: Redis 发布与订阅
 author: Marlowe
-date: 2020-12-24 15:22:32
 tags: Redis
 categories: NoSQL
---- 
+abbrlink: 25344
+date: 2020-12-25 11:59:32
+---
 <!--more-->
 Redis 发布订阅(pub/sub)是一种消息通信模式：发送者(pub)发送消息，订阅者(sub)接受消息。微博、微信、关注系统！
 Redis客户端可以订阅任意数量的频道。
@@ -20,4 +18,3 @@ Redis客户端可以订阅任意数量的频道。
 3. 订阅，关注系统
 
 稍微复杂的场景就会使用消息中间件MQ
-
