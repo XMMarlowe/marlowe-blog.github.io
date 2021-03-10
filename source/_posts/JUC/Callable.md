@@ -1,9 +1,10 @@
 ---
 title: Callable
 author: Marlowe
-date: 2020-12-26 20:29:25
 tags: Callable
 categories: JUC
+abbrlink: 36862
+date: 2020-12-26 20:29:25
 ---
 <!--more-->
 ### Callable
