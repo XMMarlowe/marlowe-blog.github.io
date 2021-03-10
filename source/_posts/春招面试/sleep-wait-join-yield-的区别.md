@@ -1,9 +1,10 @@
 ---
 title: 'sleep(),wait(),join(),yield()的区别'
 author: Marlowe
-date: 2021-03-09 17:12:15
 tags: 线程
 categories: 春招面试
+abbrlink: 22900
+date: 2021-03-09 17:12:15
 ---
 <!--more-->
 1. 锁池

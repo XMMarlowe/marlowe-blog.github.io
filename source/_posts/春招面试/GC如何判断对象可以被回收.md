@@ -1,12 +1,13 @@
 ---
 title: GC如何判断对象可以被回收
 author: Marlowe
-date: 2021-03-09 16:26:44
-tags: 
+tags:
   - Java
   - JVM
   - GC
 categories: 春招面试
+abbrlink: 5955
+date: 2021-03-09 16:26:44
 ---
 
 <!--more-->

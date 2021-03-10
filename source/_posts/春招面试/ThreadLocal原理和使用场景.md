@@ -1,9 +1,10 @@
 ---
 title: ThreadLocal原理和使用场景
 author: Marlowe
-date: 2021-03-10 15:31:01
 tags: 线程
 categories: 春招面试
+abbrlink: 58836
+date: 2021-03-10 15:31:01
 ---
 每一个Thread对象均含有一个ThreadLocalMap类型的成员变量threadLocals,它存储本线程中所有ThreadLocal对象及其对应的值。
 <!--more-->
