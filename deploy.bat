@@ -9,5 +9,7 @@ git commit -m "update..."
 git pull HexoBlog master
 git push HexoBlog master
 
+echo 'start generate'
 call hexo g
+echo 'start deploy'
 hexo d
