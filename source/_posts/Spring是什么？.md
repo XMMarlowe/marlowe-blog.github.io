@@ -1,9 +1,10 @@
 ---
 title: Spring是什么？
 author: Marlowe
-date: 2021-03-11 15:42:30
 tags: Spring
 categories: 春招面试
+abbrlink: 33751
+date: 2021-03-11 15:42:30
 ---
 轻量级的开源的J2EE框架。它是一个容器框架，用来装JavaBean，也是一个中间层框架，可以起连接作用。
 <!--more-->
