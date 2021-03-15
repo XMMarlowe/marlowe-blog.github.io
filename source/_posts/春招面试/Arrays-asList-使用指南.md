@@ -1,9 +1,10 @@
 ---
 title: Arrays.asList()使用指南
 author: Marlowe
-date: 2021-03-13 10:40:40
 tags: Arrays
 categories: 春招面试
+abbrlink: 39116
+date: 2021-03-13 10:40:40
 ---
 Arrays.asList()将数组转换为集合后,底层其实还是数组
 <!--more-->
