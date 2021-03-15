@@ -1,9 +1,10 @@
 ---
 title: ArrayList和LinkedList的区别
 author: Marlowe
-date: 2021-03-15 14:23:58
 tags: List
 categories: 春招面试
+abbrlink: 9249
+date: 2021-03-15 14:23:58
 ---
 <!--more-->
 ### Arraylist 与 LinkedList 区别?

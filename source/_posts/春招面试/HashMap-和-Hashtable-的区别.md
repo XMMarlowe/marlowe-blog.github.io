@@ -1,9 +1,10 @@
 ---
 title: HashMap 和 Hashtable 的区别
 author: Marlowe
-date: 2021-03-15 21:21:12
 tags: HashMap
 categories: 春招面试
+abbrlink: 35591
+date: 2021-03-15 21:21:12
 ---
 <!--more-->
 

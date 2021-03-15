@@ -1,9 +1,10 @@
 ---
 title: ArrayList扩容机制
 author: Marlowe
-date: 2021-03-15 14:23:43
 tags: List
 categories: 春招面试
+abbrlink: 58678
+date: 2021-03-15 14:23:43
 ---
 
 <!--more-->
