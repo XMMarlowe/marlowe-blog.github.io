@@ -1,9 +1,10 @@
 ---
 title: volatile 关键字
 author: Marlowe
-date: 2021-03-18 10:30:02
 tags: volatile
 categories: 春招面试
+abbrlink: 38250
+date: 2021-03-18 10:30:02
 ---
 volatile 关键字相关知识点...
 <!--more-->

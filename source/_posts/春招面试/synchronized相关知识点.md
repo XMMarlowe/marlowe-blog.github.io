@@ -1,9 +1,10 @@
 ---
 title: synchronized相关知识点
 author: Marlowe
-date: 2021-03-17 22:39:35
 tags: synchronized
 categories: 春招面试
+abbrlink: 3127
+date: 2021-03-17 22:39:35
 ---
 
 <!--more-->
