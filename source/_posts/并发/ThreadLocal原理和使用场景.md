@@ -2,7 +2,7 @@
 title: ThreadLocal原理和使用场景
 author: Marlowe
 tags: 线程
-categories: 春招面试
+categories: 并发
 abbrlink: 58836
 date: 2021-03-10 15:31:01
 ---
