@@ -11,5 +11,6 @@ git push HexoBlog master
 
 echo 'start generate'
 call hexo g
+
 echo 'start deploy'
-hexo d
+call hexo d
