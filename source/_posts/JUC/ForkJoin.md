@@ -1,9 +1,10 @@
 ---
 title: ForkJoin
 author: Marlowe
-date: 2021-03-25 13:37:54
 tags: ForkJoin
 categories: JUC
+abbrlink: 48829
+date: 2021-03-25 13:37:54
 ---
 ForkJoin 在JDK1.7， 并行执行任务！ 在大数据量下提高效率。
 <!--more-->
