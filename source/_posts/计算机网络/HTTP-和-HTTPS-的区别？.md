@@ -1,11 +1,12 @@
 ---
 title: HTTP 和 HTTPS 的区别？
 author: Marlowe
-date: 2021-03-22 22:11:06
-tags: 
+tags:
   - HTTP
   - HTTPS
 categories: 计算机网络
+abbrlink: 49970
+date: 2021-03-22 22:11:06
 ---
 <!--more-->
 

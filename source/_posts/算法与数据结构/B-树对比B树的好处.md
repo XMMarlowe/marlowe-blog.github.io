@@ -1,11 +1,12 @@
 ---
 title: B+树对比B树的好处
 author: Marlowe
-date: 2021-03-23 00:32:18
-tags: 
+tags:
   - BTree
   - B+Tree
 categories: 数据结构
+abbrlink: 4250
+date: 2021-03-23 00:32:18
 ---
 
 <!--more-->

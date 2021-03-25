@@ -1,9 +1,10 @@
 ---
 title: TCP流量控制、拥塞控制
 author: Marlowe
-date: 2021-03-23 00:24:56
 tags: TCP
 categories: 计算机网络
+abbrlink: 58395
+date: 2021-03-23 00:24:56
 ---
 <!--more-->
 

@@ -1,9 +1,10 @@
 ---
 title: 浅谈DNS协议
 author: Marlowe
-date: 2021-03-23 00:40:29
 tags: DNS
 categories: 计算机网路
+abbrlink: 46618
+date: 2021-03-23 00:40:29
 ---
 
 <!--more-->
