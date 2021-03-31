@@ -57,6 +57,9 @@ date: 2021-03-09 13:44:40
 1. 主要是为了安全性，避免用户自己编写的类动态替换Java的一些核心类，比如String，Integer。
 2. 同时避免了类的重新加载，因为JVM中区分不同类，不仅仅是根据类名，相同的class文件被不同的ClassLoader加载就是不同的两个类。
 
+#### 不想用双亲委派模型怎么办？
+自定义加载器的话，需要继承 ClassLoader 。如果我们不想打破双亲委派模型，就重写 ClassLoader 类中的 findClass() 方法即可，无法被父类加载器加载的类最终会通过这个方法被加载。但是，**如果想打破双亲委派模型则需要重写 loadClass() 方法**
+
 ### 五、参考文档
 [jvm之java类加载机制和类加载器(ClassLoader)的详解](https://blog.csdn.net/m0_38075425/article/details/81627349)
 
