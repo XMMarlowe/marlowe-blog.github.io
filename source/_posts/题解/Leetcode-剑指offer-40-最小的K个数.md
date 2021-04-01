@@ -1,9 +1,10 @@
 ---
 title: Leetcode-剑指offer 40.最小的K个数
 author: Marlowe
-date: 2021-03-27 19:51:16
 tags: TopK
 categories: 题解
+abbrlink: 34330
+date: 2021-03-27 19:51:16
 ---
 
 输入整数数组 arr ，找出其中最小的 k 个数。例如，输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、3、4。
