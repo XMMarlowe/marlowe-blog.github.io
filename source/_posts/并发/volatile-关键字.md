@@ -2,7 +2,7 @@
 title: volatile 关键字
 author: Marlowe
 tags: volatile
-categories: 春招面试
+categories: 并发
 abbrlink: 38250
 date: 2021-03-18 10:30:02
 ---
@@ -39,8 +39,8 @@ CPU Cache **的工作方式：**
 ![20210318103709](http://marlowe.oss-cn-beijing.aliyuncs.com/img/20210318103709.png)
 
 **关于JMM的一些同步约定：**
-1. 线程解锁前，必须把共享变量==立刻==刷回主存。
-2. 线程枷锁前，必须读取主存中的最新值到工作内存中。
+1. 线程解锁前，必须把共享变量**立刻**刷回主存。
+2. 线程加锁前，必须读取主存中的最新值到工作内存中。
 3. 加锁和解锁是同一把锁。
 
 
