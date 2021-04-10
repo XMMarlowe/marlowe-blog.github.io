@@ -1,11 +1,12 @@
 ---
 title: Java对象的创建过程
 author: Marlowe
-date: 2021-04-09 15:30:21
-tags: 
+tags:
   - Java
   - 对象
 categories: Java
+abbrlink: 26773
+date: 2021-04-09 15:30:21
 ---
 <!--more-->
 

@@ -1,9 +1,10 @@
 ---
 title: HTTP常见状态码
 author: Marlowe
-date: 2021-04-09 22:54:22
 tags: HTTP
 categories: 计算机网络
+abbrlink: 371
+date: 2021-04-09 22:54:22
 ---
 常见的http状态码：100,200,202,204,301,404,500,503...
 <!--more-->

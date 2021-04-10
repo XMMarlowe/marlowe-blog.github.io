@@ -1,9 +1,10 @@
 ---
 title: HTTP 1.0和HTTP 1.1的主要区别是什么?
 author: Marlowe
-date: 2021-04-09 22:39:29
 tags: HTTP
 categories: 计算机网络
+abbrlink: 52163
+date: 2021-04-09 22:39:29
 ---
 
 <!--more-->

@@ -1,11 +1,12 @@
 ---
 title: JVM垃圾回收算法
 author: Marlowe
-date: 2021-04-09 15:13:36
-tags: 
+tags:
   - JVM
   - 垃圾回收
 categories: Java
+abbrlink: 50446
+date: 2021-04-09 15:13:36
 ---
 
 <!--more-->

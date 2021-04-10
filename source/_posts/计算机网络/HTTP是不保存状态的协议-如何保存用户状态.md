@@ -1,9 +1,10 @@
 ---
 title: 'HTTP是不保存状态的协议,如何保存用户状态?'
 author: Marlowe
-date: 2021-04-09 22:42:30
 tags: HTTP
 categories: 计算机网络
+abbrlink: 61490
+date: 2021-04-09 22:42:30
 ---
 
 <!--more-->
