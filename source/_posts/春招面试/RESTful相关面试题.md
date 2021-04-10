@@ -1,9 +1,10 @@
 ---
 title: RESTful相关面试题
 author: Marlowe
-date: 2021-04-10 18:43:48
 tags: RESTful
 categories: 春招面试
+abbrlink: 63314
+date: 2021-04-10 18:43:48
 ---
 RESTful也可以称为“面向资源编程”。
 <!--more-->

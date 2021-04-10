@@ -1,11 +1,12 @@
 ---
 title: MySQL中乐观锁实现(mvcc)
 author: Marlowe
-date: 2021-04-10 10:49:23
-tags: 
+tags:
   - MySQL
   - mvcc
 categories: 数据库
+abbrlink: 4476
+date: 2021-04-10 10:49:23
 ---
 MVCC即Multi-Version Concurrency Control，中文翻译过来叫多版本并发控制。
 <!--more-->

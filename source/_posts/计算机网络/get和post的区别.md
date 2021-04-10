@@ -1,11 +1,12 @@
 ---
 title: get和post的区别
 author: Marlowe
-date: 2021-04-10 10:42:32
-tags: 
+tags:
   - get
   - post
 categories: 计算机网络
+abbrlink: 50476
+date: 2021-04-10 10:42:32
 ---
 <!--more-->
 

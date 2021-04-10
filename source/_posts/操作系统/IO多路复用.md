@@ -1,9 +1,10 @@
 ---
 title: IO多路复用
 author: Marlowe
-date: 2021-04-10 19:04:10
 tags: IO
 categories: 操作系统
+abbrlink: 36405
+date: 2021-04-10 19:04:10
 ---
 <!--more-->
 

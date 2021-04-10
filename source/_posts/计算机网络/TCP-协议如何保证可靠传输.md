@@ -1,9 +1,10 @@
 ---
 title: TCP 协议如何保证可靠传输
 author: Marlowe
-date: 2021-04-10 18:34:42
 tags: TCP
-categories: 计算机网络 
+categories: 计算机网络
+abbrlink: 22255
+date: 2021-04-10 18:34:42
 ---
 <!--more-->
 

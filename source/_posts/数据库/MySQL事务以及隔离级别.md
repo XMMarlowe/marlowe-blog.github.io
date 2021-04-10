@@ -1,12 +1,13 @@
 ---
 title: MySQL事务以及隔离级别
 author: Marlowe
-date: 2021-04-10 11:23:22
 tags:
   - 事务
   - 隔离级别
   - MySQL
 categories: 数据库
+abbrlink: 35599
+date: 2021-04-10 11:23:22
 ---
 MySQL事务相关面试题...
 <!--more-->
