@@ -4,7 +4,7 @@ author: Marlowe
 abbrlink: 46125
 date: 2021-03-15 14:23:22
 tags: HashMap
-categories: 春招面试
+categories: Java
 ---
 `HashMap`的线程不安全体现在会造成死循环、数据丢失、数据覆盖这些问题。其中死循环和数据丢失是在JDK1.7中出现的问题，在JDK1.8中已经得到解决，然而1.8中仍会有数据覆盖这样的问题。
 <!--more-->

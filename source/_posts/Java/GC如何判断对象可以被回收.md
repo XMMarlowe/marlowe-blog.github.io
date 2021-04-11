@@ -5,7 +5,7 @@ tags:
   - Java
   - JVM
   - GC
-categories: 春招面试
+categories: Java
 abbrlink: 5955
 date: 2021-03-09 16:26:44
 ---

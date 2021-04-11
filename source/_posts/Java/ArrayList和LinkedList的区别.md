@@ -2,7 +2,7 @@
 title: ArrayList和LinkedList的区别
 author: Marlowe
 tags: List
-categories: 春招面试
+categories: Java
 abbrlink: 9249
 date: 2021-03-15 14:23:58
 ---

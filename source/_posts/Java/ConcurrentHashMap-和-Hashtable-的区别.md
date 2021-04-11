@@ -6,7 +6,7 @@ date: 2021-03-16 09:56:52
 tags: 
   - HashMap
   - 线程安全
-categories: 春招面试
+categories: Java
 ---
 `ConcurrentHashMap` 和 `Hashtable` 的区别主要体现在实现线程安全的方式上不同。
 <!--more-->

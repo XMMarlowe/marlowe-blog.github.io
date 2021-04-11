@@ -2,7 +2,7 @@
 title: HashMap底层原理
 author: Marlowe
 tags: HashMap
-categories: 春招面试
+categories: Java
 abbrlink: 10092
 date: 2021-03-15 14:23:01
 ---

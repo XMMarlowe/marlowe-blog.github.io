@@ -1,5 +1,5 @@
 ---
-title: 初始CAS与ABA问题
+title: 初识CAS与ABA问题
 author: Marlowe
 tags:
   - CAS
@@ -29,7 +29,7 @@ while(true) {
 
   //这时候如果别的线程把共享变量改成了 5，本线程的正确结果 1 就作
   //废了，这时候 compareAndSwap 返回 false，重新尝试，直到： compareAndSwap 返回 
-  //true，表示我本线程做修改的同时，别的线程没有干扰 */
+  //true，表示我本线程做修改的同时，别的线程没有干扰
   if( compareAndSwap ( 旧值, 结果 )) { 
     // 成功，退出循环 
   }
@@ -62,6 +62,7 @@ false
 ```
 
 ### CAS 缺点
+
 CAS虽然很高效的解决了原子操作问题，但是CAS仍然存在三大问题。
 1. 循环会耗时
 2. 一次性只能保证一个共享变量的原子性
@@ -69,7 +70,42 @@ CAS虽然很高效的解决了原子操作问题，但是CAS仍然存在三大�
 
 
 
-### CAS:ABA问题(狸猫换太子)
+### CAS:ABA问题
+
+#### 什么是ABA问题？
+
+ABA问题通俗一点的说，就是一个从内存里面读取到了值A，正在改的时候也检查到了还是A，但是真实的值是被改成了B再改回了A的。
+
+#### 怎么解决ABA问题
+
+解决ABA问题就是给操作数加上一个“版本号”，就像Mysql的乐观锁一样。而Java中提供了AtomicStampedReference类来实现这个功能。
+
+AtomicStampedReference类可以给一个引用标记上一个标记位，来保证原子性。AtomicStampedReference可以给一个引用标记上一个整型的版本戳，来保证原子性。
+
+代码测试：
+```java
+public class CASTest {
+    public static String A = "A";
+    public static String B = "B";
+    public static String C = "C";
+    public static AtomicStampedReference<String> atomic = new AtomicStampedReference<>(A, 0);
+
+    public static void main(String[] args) {
+        //线程1来了，先检查是否和当前值一样,我准备把A改成C了,并且拿到线程1比较时候的stamp
+        boolean same = atomic.attemptStamp(A, 1);
+        int stamp = atomic.getStamp();
+        //线程2来了，我准备把A换成B了
+        atomic.compareAndSet(A, B, atomic.getStamp(), atomic.getStamp() + 1);
+        //线程3来了，我准备把B换回A了
+        atomic.compareAndSet(A, B, atomic.getStamp(), atomic.getStamp() + 1);
+        //到线程1来修改了A成C了
+        if (same) {
+            boolean b = atomic.compareAndSet(A, C, stamp, stamp + 1);
+            System.out.println(b?"修改成功":"修改失败ABA了");
+        }
+    }
+}
+```
 
 
 

@@ -2,7 +2,7 @@
 title: HashMap 和 Hashtable 的区别
 author: Marlowe
 tags: HashMap
-categories: 春招面试
+categories: Java
 abbrlink: 35591
 date: 2021-03-15 21:21:12
 ---

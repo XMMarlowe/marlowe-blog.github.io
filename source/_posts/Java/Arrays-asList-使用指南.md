@@ -2,7 +2,7 @@
 title: Arrays.asList()使用指南
 author: Marlowe
 tags: Arrays
-categories: 春招面试
+categories: Java
 abbrlink: 39116
 date: 2021-03-13 10:40:40
 ---

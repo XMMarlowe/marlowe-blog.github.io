@@ -2,7 +2,7 @@
 title: HashMap扩容机制
 author: Marlowe
 tags: HashMap
-categories: 春招面试
+categories: Java
 abbrlink: 49291
 date: 2021-03-16 10:33:21
 ---
