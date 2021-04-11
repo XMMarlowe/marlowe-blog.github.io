@@ -1,11 +1,12 @@
 ---
 title: 锁机制与 InnoDB 锁算法
 author: Marlowe
-date: 2021-04-11 10:19:50
-tags: 
+tags:
   - 锁
   - InnoDB
 categories: 数据库
+abbrlink: 28295
+date: 2021-04-11 10:19:50
 ---
 <!--more-->
 

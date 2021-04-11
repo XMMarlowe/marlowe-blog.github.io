@@ -1,11 +1,12 @@
 ---
 title: Java中的集合类及关系图
 author: Marlowe
-date: 2021-04-11 10:07:50
-tags: 
+tags:
   - 集合类
   - 类图
 categories: Java
+abbrlink: 25436
+date: 2021-04-11 10:07:50
 ---
 
 <!--more-->

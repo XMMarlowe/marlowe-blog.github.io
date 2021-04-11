@@ -1,11 +1,12 @@
 ---
 title: Mysql 中 MyISAM 和 InnoDB 的区别有哪些？
 author: Marlowe
-date: 2021-04-11 09:42:45
-tags: 
+tags:
   - InnoDB
   - MyISAM
 categories: 数据库
+abbrlink: 36675
+date: 2021-04-11 09:42:45
 ---
 
 <!--more-->
