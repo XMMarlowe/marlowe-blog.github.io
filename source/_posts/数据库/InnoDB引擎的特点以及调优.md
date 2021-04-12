@@ -1,9 +1,10 @@
 ---
 title: InnoDB引擎的特点以及调优
 author: Marlowe
-date: 2021-04-12 21:51:03
 tags: InnoDB
 categories: 数据库
+abbrlink: 476
+date: 2021-04-12 21:51:03
 ---
 
 谈谈InnoDB的特点，以及InnoDB解决的问题...
