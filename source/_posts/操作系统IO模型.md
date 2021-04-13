@@ -1,9 +1,10 @@
 ---
 title: 操作系统IO模型
 author: Marlowe
-date: 2021-04-12 22:55:40
 tags: IO
 categories: 操作系统
+abbrlink: 32272
+date: 2021-04-12 22:55:40
 ---
 IO模型的分类：主要有同步IO、异步IO、阻塞IO、非阻塞IO...
 <!--more-->
