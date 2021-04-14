@@ -233,24 +233,17 @@ y = x * x; // 4
 
 我们所期望的：1234 但是可能执行的时候会变成 2134 1324
 ```
-**volatile可以避免指令重排：**
-内存屏障，CPU指令。 作用：
+#### volatile如何避免指令重排：**
+
+**内存屏障**，是一个CPU指令。 作用：
 1. 保证特定操作的执行顺序。
 2. 可以保证某些变量的内存可见性（利用这些特性，volatile实现了可见性）。
 
 volatile 可以保证可见性，不能保证原子性，由于内存屏障，可以保证避免指令重排的现象产生！
 
+由于编译器和处理器都能执行指令重排优化，如果在指令之间插入一条内存屏障则会告诉编译器和cup不管在任何情况下，无论任何指令都不能和这条内存屏障进行指令重排，也就是说通过插入内存屏障禁止在内存屏障前后的指令执行重排序优化。内存屏障的另外一个作用就是强制刷出各种CPU的缓存数据，因此在任何CPU上的线程都能读取到这些数据的最新值。
 
-
-
-
-
-
-
-
-
-
-
+![volatile禁止指令重排](https://img-blog.csdnimg.cn/20200704151144615.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTQzODUyNjc=,size_16,color_FFFFFF,t_70#pic_center)
 
 
 
