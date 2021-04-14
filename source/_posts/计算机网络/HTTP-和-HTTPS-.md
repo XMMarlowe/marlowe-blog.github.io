@@ -27,6 +27,27 @@ date: 2021-03-22 22:11:06
 ![HTTP报文格式](https://img-blog.csdnimg.cn/2019080311162578.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW9taW5nMTAwMDAx,size_16,color_FFFFFF,t_70)
 </center>
 
+1. **请求方法:** GET和POST是最常见的HTTP方法,初次以外还包括 DELETE、HEAD、OPTIONS、PUT、TRACE，不过现在大部分的浏览器只支持GET和POST。
+
+2. **请求对应的URL地址：** 他和报文头的Host属性,组合起来是一个完整的请求URL。
+
+3. **协议名称和版本号**。
+
+4. **报文头：** 有若干个属性,形式为key:val,服务端据此获取客户端信息。
+
+5. **是报文体：** 它将一个页面表单中的组件值通过param1=val1&parma=2的键值对形式编码成一个格式化串,它承载多个请求参数的数据,不但报文头可以传递请求参数,URL也可以通过/chapter15/user.html? param1=value1&param2=value2”的方式传递数值。
+
+
+### HTTP响应报文
+1. **报文协议及版本**；
+
+2. **状态码及状态描述**；
+
+3. **响应报文头:** 也是由多个属性组成；
+
+4. **响应报文体:** 即我们要的数据。
+
+
 #### HTTP通信传输
 
 ![HTTP通信传输](https://img-blog.csdn.net/20180719094739178?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW9taW5nMTAwMDAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
