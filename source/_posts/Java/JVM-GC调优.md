@@ -21,7 +21,7 @@ GC调优的目的可以总结为下面两点：
 * 减少FullGC的执行时间
 
 ### 减少对象晋升到老年代的数量
-分代垃圾回收是Oracle JVM中回收思想。 我们知道在Eden区创建的对象，在from Survivor 复制到to Survivor区之后，达到一定年龄就进入了老年代。有些对象因为比较大就直接进入了老年代。在老年代的GC时间相比于年轻代时间更长。因此，减少对象进入老年代可以降低Full GC的频率。
+分代垃圾回收是Oracle JVM中回收思想。 我们知道在Eden区创建的对象，在from Survivor 复制到to Survivor区之后，达到一定年龄就进入了老年代(15次)。有些对象因为比较大就直接进入了老年代。在老年代的GC时间相比于年轻代时间更长。因此，减少对象进入老年代可以降低Full GC的频率。
 
 ### 减少FullGC的执行时间
 
@@ -39,7 +39,7 @@ JVM调优主要用到参数罗列在下面的两张表中。主要分为内存�
 
 <center>
 
-![JVM参数](https://upload-images.jianshu.io/upload_images/5611237-dd221ae5ca3e13d4.png?imageMogr2/auto-orient/strip|imageView2/2/w/890/format/webp)
+![20210415103509](http://marlowe.oss-cn-beijing.aliyuncs.com/img/20210415103509.png)
 </center>
 
 1.针对JVM堆的设置，一般可以通过-Xms -Xmx限定其最小、最大值，**为了防止垃圾收集器在最小、最大之间收缩堆而产生额外的时间，通常把最大、最小设置为相同的值;**
