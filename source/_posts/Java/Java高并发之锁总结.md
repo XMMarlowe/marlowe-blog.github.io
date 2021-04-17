@@ -4,7 +4,7 @@ author: Marlowe
 tags:
   - Java
   - 锁
-categories: 并发
+categories: Java
 abbrlink: 47470
 date: 2021-04-11 21:37:12
 ---

@@ -1,5 +1,5 @@
 ---
-title: 四大函数式接口
+title: Java8四大函数式接口
 author: Marlowe
 tags: 函数式接口
 categories: JUC

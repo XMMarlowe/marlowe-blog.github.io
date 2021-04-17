@@ -10,6 +10,8 @@ date: 2021-03-10 15:31:01
 <!--more-->
 简介：ThreadLocal保存当前线程的变量，当前线程内，可以任意获取，但每个线程往ThreadLocal中读写数据是线程隔离，互不影响。
 
+**如果你创建了一个ThreadLocal变量，那么访问这个变量的每个线程都会有这个变量的本地副本，这也是ThreadLocal变量名的由来。他们可以使用 get（） 和 set（） 方法来获取默认值或将其值更改为当前线程所存的副本的值，从而避免了线程安全问题。**
+
 ```java
 ThreadLocalMap源码：
 
@@ -29,10 +31,10 @@ static class Entry extends WeakReference<ThreadLocal<?>> {
 **注意**
 > ThreadLocal存在内存泄露：
 
-强引用(StrongReference)： 使用最普遍的引用(new),一个对象具有强引用，不会被GC回收。当JVM的内存空间不足时，宁愿抛出OutOfMemoryError使得程序异常终止也不愿意回收具有强引用的存活着的对象。
+**强引用(StrongReference)：** 使用最普遍的引用(new),一个对象具有强引用，不会被GC回收。当JVM的内存空间不足时，宁愿抛出OutOfMemoryError使得程序异常终止也不愿意回收具有强引用的存活着的对象。
 如果想取消强引用和某个对象之间的关联，可以显式的将引用赋值为null，这样可以是JVM在合适的时候回收该对象。
 
-弱引⽤(WeakReference)：在GC的时候，不管内存空间足不足都会回收这个对象。可以在缓存中使用弱引用。
+**弱引⽤(WeakReference)：** 在GC的时候，不管内存空间足不足都会回收这个对象。可以在缓存中使用弱引用。
 
 当我们了解完，ThreadLocalMap 中使⽤的 key是以弱引用指向ThreadLocal，这时候垃圾回收器线程运行，发现弱引用就回收，key被回收。ThreadLocalMap里对应的Entry的key会变成null。这时候尴尬出现了，ThreadLocalMap里对应的Entry的value则无法被访问到，value作为一个强引用垃圾回收不到也不能被访问，即造成了内存溢出。
 

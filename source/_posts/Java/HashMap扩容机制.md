@@ -103,7 +103,7 @@ final Node<K,V>[] resize() {
     threshold = newThr;
     //创建新的哈希表
     @SuppressWarnings({"rawtypes","unchecked"})
-    //newCap是新的数组长度--》32
+    //newCap是新的数组长度-->32
     Node<K,V>[] newTab = (Node<K,V>[])new Node[newCap];
     table = newTab;
     //判断旧数组是否等于空
