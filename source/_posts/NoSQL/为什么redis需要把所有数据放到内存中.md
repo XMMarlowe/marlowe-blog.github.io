@@ -1,9 +1,10 @@
 ---
 title: 为什么redis需要把所有数据放到内存中?
 author: Marlowe
-date: 2021-04-16 20:24:56
 tags: Redis
 categories: NoSQL
+abbrlink: 24555
+date: 2021-04-16 20:24:56
 ---
 
 <!--more-->

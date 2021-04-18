@@ -1,9 +1,10 @@
 ---
 title: Java内存模型-JMM
 author: Marlowe
-date: 2021-04-16 21:19:30
 tags: JMM
 categories: Java
+abbrlink: 60948
+date: 2021-04-16 21:19:30
 ---
 
 <!--more-->

@@ -1,9 +1,10 @@
 ---
 title: MySQL怎么让左模糊查询走索引？
 author: Marlowe
-date: 2021-04-16 21:37:00
 tags: MySQL
 categories: 数据库
+abbrlink: 32175
+date: 2021-04-16 21:37:00
 ---
 <!--more-->
 

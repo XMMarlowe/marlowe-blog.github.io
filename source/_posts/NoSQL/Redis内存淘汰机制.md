@@ -1,9 +1,10 @@
 ---
 title: Redis内存淘汰机制
 author: Marlowe
-date: 2021-04-16 20:20:38
 tags: Redis
 categories: NoSQL
+abbrlink: 63337
+date: 2021-04-16 20:20:38
 ---
 
 <!--more-->

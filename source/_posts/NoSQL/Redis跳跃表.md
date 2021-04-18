@@ -1,9 +1,10 @@
 ---
 title: Redis跳跃表
 author: Marlowe
-date: 2021-04-16 20:39:08
 tags: Redis
 categories: NoSQL
+abbrlink: 12505
+date: 2021-04-16 20:39:08
 ---
 Redis跳跃表相关问题...
 <!--more-->

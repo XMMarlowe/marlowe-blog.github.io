@@ -1,11 +1,12 @@
 ---
 title: Java反射相关知识点
 author: Marlowe
-date: 2021-04-16 16:00:16
-tags: 
+tags:
   - 反射
   - Java
 categories: Java
+abbrlink: 40692
+date: 2021-04-16 16:00:16
 ---
 
 <!--more-->

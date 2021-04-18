@@ -1,9 +1,10 @@
 ---
 title: Redis事务的CAS(check-and-set)
 author: Marlowe
-date: 2021-04-16 20:28:46
 tags: Redis
 categories: NoSQL
+abbrlink: 59039
+date: 2021-04-16 20:28:46
 ---
 和众多其它数据库一样，Redis作为NoSQL数据库也同样提供了事务机制。在Redis中，MULTI/EXEC/DISCARD/WATCH这四个命令是我们实现事务的基石。
 <!--more-->

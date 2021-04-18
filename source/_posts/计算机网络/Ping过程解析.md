@@ -1,9 +1,10 @@
 ---
 title: Ping过程解析
 author: Marlowe
-date: 2021-04-16 20:03:07
 tags: Ping
 categories: 计算机网络
+abbrlink: 62101
+date: 2021-04-16 20:03:07
 ---
 
 <!--more-->

@@ -1,11 +1,12 @@
 ---
 title: MySQL什么时候适合建索引，什么时候不适合建索引？
 author: Marlowe
-date: 2021-04-16 21:41:00
-tags: 
+tags:
   - MySQL
   - 索引
 categories: 数据库
+abbrlink: 25476
+date: 2021-04-16 21:41:00
 ---
 
 <!--more-->

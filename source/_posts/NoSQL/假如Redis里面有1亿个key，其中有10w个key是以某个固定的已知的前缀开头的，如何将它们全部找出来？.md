@@ -1,9 +1,10 @@
 ---
 title: 假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如何将它们全部找出来？
 author: Marlowe
-date: 2021-04-16 20:34:16
 tags: Redis
 categories: NoSQL
+abbrlink: 57553
+date: 2021-04-16 20:34:16
 ---
 
 <!--more-->
