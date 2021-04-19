@@ -2,7 +2,7 @@
 title: Callable
 author: Marlowe
 tags: Callable
-categories: JUC
+categories: 并发
 abbrlink: 36862
 date: 2020-12-26 20:29:25
 ---
@@ -40,6 +40,12 @@ class MyThread implements Callable<Integer> {
     }
 }
 
+```
+
+结果：
+```java
+// 只有一个call(),因为有缓存
+call()
 ```
 注意：
 1. 有缓存

@@ -3,8 +3,8 @@ title: 多线程Future的用法
 author: Marlowe
 abbrlink: 23984
 date: 2021-04-17 16:49:20
-tags:
-categories:
+tags: Future
+categories: 并发
 ---
 
 <!--more-->

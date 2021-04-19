@@ -5,7 +5,7 @@ tags:
   - 多线程
   - Java
   - 锁
-categories: JUC
+categories: 并发
 abbrlink: 48506
 date: 2020-12-02 22:19:29
 ---

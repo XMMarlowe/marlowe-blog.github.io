@@ -2,7 +2,7 @@
 title: ForkJoin
 author: Marlowe
 tags: ForkJoin
-categories: JUC
+categories: 并发
 abbrlink: 48829
 date: 2021-03-25 13:37:54
 ---

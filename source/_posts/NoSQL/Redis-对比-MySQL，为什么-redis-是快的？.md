@@ -6,7 +6,7 @@ date: 2021-04-15 23:00:53
 tags: 
   - Redis
   - MySQL
-categories: 数据库
+categories: Redis
 ---
 
 <!--more-->

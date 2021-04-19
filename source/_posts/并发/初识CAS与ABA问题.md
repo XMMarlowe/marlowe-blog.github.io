@@ -4,7 +4,7 @@ author: Marlowe
 tags:
   - CAS
   - ABA
-categories: JUC
+categories: 并发
 abbrlink: 33465
 date: 2021-03-25 20:34:19
 ---
