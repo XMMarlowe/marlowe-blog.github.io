@@ -2,7 +2,7 @@
 title: Java8四大函数式接口
 author: Marlowe
 tags: 函数式接口
-categories: JUC
+categories: Java
 abbrlink: 12083
 date: 2021-03-25 13:00:01
 ---

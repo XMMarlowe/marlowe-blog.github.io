@@ -2,11 +2,23 @@
 title: 'sleep(),wait(),join(),yield()的区别'
 author: Marlowe
 tags: 线程
-categories: 春招面试
+categories: 并发
 abbrlink: 22900
 date: 2021-03-09 17:12:15
 ---
 <!--more-->
+
+### sleep
+
+### wait
+
+
+### join
+
+
+### yield
+
+
 1. 锁池
 所有需要竞争同步锁的线程都会放在锁池当中，比如当前对象的锁已经被其中一个线程得到，则其他线程需要在这个锁池等待，当前面的线程释放同步锁后锁池中的线程去竞争同步锁，当某个线程得到后会进入就绪队列进行等待cpu资源分配。
 2. 等待池

@@ -2,7 +2,7 @@
 title: 'final,static,this,super关键字总结'
 author: Marlowe
 tags: 关键字
-categories: 春招面试
+categories: Java
 abbrlink: 52409
 date: 2021-03-13 15:55:17
 ---
