@@ -1,9 +1,10 @@
 ---
 title: Java并发之Unsafe类
 author: Marlowe
-date: 2021-04-21 22:07:17
 tags: Unsafe
 categories: 并发
+abbrlink: 10892
+date: 2021-04-21 22:07:17
 ---
 
 <!--more-->
