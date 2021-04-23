@@ -4,7 +4,7 @@ author: Marlowe
 tags: 函数式接口
 categories: Java
 abbrlink: 12083
-date: 2021-03-25 13:00:01
+date: 2020-03-25 13:00:01
 ---
 只有一个方法的接口叫做函数式接口。
 Function、Predicate、Consumer、Supplier

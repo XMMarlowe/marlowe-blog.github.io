@@ -4,7 +4,7 @@ author: Marlowe
 tags: Arrays
 categories: Java
 abbrlink: 39116
-date: 2021-03-13 10:40:40
+date: 2020-03-13 10:40:40
 ---
 Arrays.asList()将数组转换为集合后,底层其实还是数组
 <!--more-->

@@ -6,7 +6,7 @@ tags:
   - Session
 categories: 计算机网络
 abbrlink: 37497
-date: 2021-04-09 22:35:26
+date: 2021-02-09 22:35:26
 ---
 Cookie的作用是什么? 和Session有什么区别？
 <!--more-->

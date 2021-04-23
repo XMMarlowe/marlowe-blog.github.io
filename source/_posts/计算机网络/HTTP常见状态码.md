@@ -4,7 +4,7 @@ author: Marlowe
 tags: HTTP
 categories: 计算机网络
 abbrlink: 371
-date: 2021-04-09 22:54:22
+date: 2021-02-09 22:54:22
 ---
 常见的http状态码：100,200,202,204,301,302,404,500,502,503,504...
 <!--more-->
