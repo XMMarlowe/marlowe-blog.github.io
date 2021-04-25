@@ -1,5 +1,5 @@
 ---
-title: GC如何判断对象可以被回收
+title: JVM-GC如何判断对象可以被回收
 author: Marlowe
 tags:
   - Java

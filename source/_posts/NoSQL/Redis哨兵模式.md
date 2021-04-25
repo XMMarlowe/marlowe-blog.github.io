@@ -68,9 +68,9 @@ sentinel monitor mymaster 192.168.14.101 6379 2
 
 一、从 slave 节点中选出一个合适的 节点作为新的master节点.这里的合适包括如下几点:
 
-1. 选择 slave-priority(slave节点优先级)最高的slave节点,如果存在则返回,不存在则继续下一步判断。
-2. 选择复制偏移量最大的 slave 节点(复制的最完整),如果存在则返回,不存在则继续。
-3. 选择runId最小的slave节点(启动最早的节点)
+1. 选择 slave-priority(**slave节点优先级,也即priority最小的**)最高的slave节点,如果存在则返回,不存在则继续下一步判断。
+2. 选择复制偏移量最大的 slave 节点(**复制的最完整**),如果存在则返回,不存在则继续。
+3. 选择runId最小的slave节点(**启动最早的节点**)
 
 二、对上面选出来的 slave 节点执行 slaveof no one 命令让其成为新的 master 节点。
 
