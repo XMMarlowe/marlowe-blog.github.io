@@ -1,12 +1,13 @@
 ---
 title: Java如何开启线程?怎么保证线程安全?
 author: Marlowe
-date: 2021-04-26 21:57:17
-tags: 
+tags:
   - Java
   - 线程
   - 线程安全
 categories: 并发
+abbrlink: 41203
+date: 2021-04-26 21:57:17
 ---
 
 <!--more-->
