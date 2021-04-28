@@ -2,7 +2,7 @@
 title: synchronized相关知识点
 author: Marlowe
 tags: synchronized
-categories: 春招面试
+categories: 并发
 abbrlink: 3127
 date: 2021-03-17 22:39:35
 ---
