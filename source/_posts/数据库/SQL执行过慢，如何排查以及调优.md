@@ -1,11 +1,12 @@
 ---
 title: SQL执行过慢，如何排查以及调优
 author: Marlowe
-date: 2021-04-29 21:37:24
-tags: 
+tags:
   - SQL
   - 调优
-categories: 数据库 
+categories: 数据库
+abbrlink: 56950
+date: 2021-04-29 21:37:24
 ---
 
 <!--more-->

@@ -1,9 +1,10 @@
 ---
 title: 初识HTTP2.0
 author: Marlowe
-date: 2021-04-29 21:02:52
 tags: HTTP
 categories: 计算机网络
+abbrlink: 3514
+date: 2021-04-29 21:02:52
 ---
 
 HTTP/2是HTTP协议自1999年HTTP 1.1发布后的首个更新，主要基于SPDY协议。由互联网

@@ -1,12 +1,13 @@
 ---
 title: MySQL redo log、binlog、undo log 区别与作用
 author: Marlowe
-date: 2021-04-29 22:06:33
 tags:
   - redo log
   - binlog
   - undo log
 categories: 数据库
+abbrlink: 58289
+date: 2021-04-29 22:06:33
 ---
 日志系统主要有redo log(重做日志)和binlog(归档日志)。redo log是InnoDB存储引擎层的日志，binlog是MySQL Server层记录的日志， 两者都是记录了某些操作的日志(不是所有)自然有些重复（但两者记录的格式不同）。
 <!--more-->
