@@ -1,11 +1,12 @@
 ---
 title: as-if-serial规则和happens-before规则
 author: Marlowe
-date: 2021-04-28 20:41:41
-tags: 
+tags:
   - as-if-serial
   - happens-before
 categories: 并发
+abbrlink: 39231
+date: 2021-04-28 20:41:41
 ---
 我们知道为了提高并行度，优化程序性能，编译器和处理器会对代码进行指令重排序。但为了不改变程序的执行结果，尽可能地提高程序执行的并行度，我们需要了解as-if-serial规则和happens-before规则。
 <!--more-->

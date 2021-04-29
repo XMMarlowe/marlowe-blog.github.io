@@ -1,11 +1,12 @@
 ---
 title: Synchronized与ReentrantLock
 author: Marlowe
-date: 2021-04-28 14:19:05
-tags: 
+tags:
   - Synchronized
   - ReentrantLock
 categories: 并发
+abbrlink: 20540
+date: 2021-04-28 14:19:05
 ---
 Java 里面，最基本的互斥同步手段就是 synchronized 关键字，这是一种块结构( Block Structured ）的同步语法。还有就是 Java 类库中新提供了 java. util.concurrent 包，其中的 java.util.concurrent.locks.Lock 接口便成了 Java 另一 全新的互斥 同步手段。
 <!--more-->
