@@ -68,3 +68,32 @@ poll 没有最大描述符数量的限制，如果平台支持并且对实时性
 #### epoll 应用场景
 
 只需要运行在 Linux 平台上，并且有非常大量的描述符需要同时轮询，而且这些连接最好是长连接。
+
+#### select、poll、epoll有什么区别？
+
+他们是NIO中多路复用的三种实现机制，是由Linux操作系统提供的。
+
+用户空间和内核空间:操作系统为了保护系统安全，将内核划分为两个部分，一个是用户空间，一个是内核空间。用户空间不能直接访问底层的硬件设备，必须通过内核空间。
+
+文件描述符File Descriptor(FD):是一个抽象的概念，形式上是一个整数，实际上是一个索引值。指向内核中为每个进程维护进程所打开的文件的记录表。当程序打开一个文件或者创建一个文件时，内核就会向进程返回一个FD。Unix,Linux
+
+**select机制:** 会维护一个FD的结合 fd_set。将fd_set从用户空间复制到内核空间，激活socket。x64 2048(数组大小) fd_set是一个数组结构。
+
+**Poll机制:** 和selecter机制是差不多的， 把fd_ set结构进行了优化，FD集合的大小就突破了操作系统的限制。pollfd结构来代替fd_set, 通过链表实现的。
+
+**EPoll:** Event Poll.Epoll不再扫描所有的FD，只将用户关心的FD的事件存放到内核的一一个事件表当中。
+
+**简单总结**
+
+| |操作方式| 底层实现 | 最大连接数 | IO效率
+|:---:|:---:|:---:|:---:|:---:|
+|select| 遍历| 数组| 受限于内核| 一般|
+|poll| 遍历| 链表| 无上限| 一般|
+|epoll| 事件回调| 红黑树| 无上限| 高|
+
+Java的NIO当中使用的是那种机制？
+
+可以查看 DefaultSelectorProvider源码。
+在windows 下，WindowsSelectorProvider。
+而Linux下，根据Linux的内核版本，2.6版本以上，就是EPollSelectorProvider, 否则就是 默认的PollSelectorProvider。
+
