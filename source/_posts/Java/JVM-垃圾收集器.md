@@ -151,6 +151,8 @@ CMS的核心算法就是三色标记。
 **灰色:** 自己标记完了，但是成员变量还没有完全标记完。
 **白色:** 自己未标记完。
 
+CMS通过增量标记increment update的方式来解决漏标的问题。
+
 ### 参考
 [JVM几种垃圾回收器介绍](https://www.cnblogs.com/blythe/p/7488061.html)
 [读《深入理解java虚拟机》（三）垃圾回收器](http://cmsblogs.com/?p=17120)
