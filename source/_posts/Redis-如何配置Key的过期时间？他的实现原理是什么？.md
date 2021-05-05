@@ -1,9 +1,10 @@
 ---
 title: Redis 如何配置Key的过期时间？他的实现原理是什么？
 author: Marlowe
-date: 2021-05-04 21:11:54
 tags: Redis
 categories: NoSQL
+abbrlink: 9556
+date: 2021-05-04 21:11:54
 ---
 
 <!--more-->
