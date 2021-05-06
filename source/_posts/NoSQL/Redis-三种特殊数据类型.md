@@ -10,8 +10,8 @@ date: 2020-12-20 10:58:35
 ---
 Radis 三种特殊数据类型...
 <!--more-->
-### 三种特殊数据类型
-#### geospatial
+
+### geospatial
 ```bash
 geoadd # 添加位置
 geopos #获得当前定位 一定是一个坐标值
@@ -22,7 +22,7 @@ georadiusbymember 找出指定元素周围的其他元素
 geohash 返回11个字符串的geohash字符串
 geo底层的实现原理就是zset！我们可以通过zset命令来操作geo
 ```
-#### Hyperloglog
+### Hyperloglog
 ```bash
 Redis Hyperloglog 基数统计的算法！
 优点:占用的内存固定，2^64不同的元素基数，只需要12KB内存！如果要从内存角度来比较的话Hyperloglog首选！
@@ -36,8 +36,26 @@ pfcount 统计元素的基数数量
 pfmearge mykey3 mykey mykey2 #合并两组mykey mykey2 => mykey3 并集
 如果允许容错，使用Hyperloglog；如果不允许容错，就使用set或者自己的数据类型即可
 ```
-#### Bitmap
-> 位存储
+### Bitmap
+
+#### 原理
+
+8bit = 1b = 0.001kb
+
+bitmap就是通过最小的单位bit来进行0或者1的设置，表示某个元素对应的值或者状态。
+一个bit的值，或者是0，或者是1；也就是说一个bit能存储的最多信息是2。
+
+#### 优势
+1. 基于最小的单位bit进行存储，所以非常省空间。
+2. 设置时候时间复杂度O(1)、读取时候时间复杂度O(n)，操作是非常快的。
+3. 二进制数据的存储，进行相关计算的时候非常快。
+4. 方便扩容
+
+#### 限制
+
+redis中bit映射被限制在512MB之内，所以最大是2^32位。建议每个key的位数都控制下，因为读取时候时间复杂度O(n)，越大的串读的时间花销越多。
+
+#### 案例 
 
 ```bash
 统计用户信息，活跃 不活跃！ 登录 未登录! 打卡 未打卡！ 两个状态的，都可以使用Bitmaps

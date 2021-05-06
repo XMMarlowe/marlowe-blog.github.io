@@ -1,12 +1,13 @@
 ---
 title: Java学习推荐书籍
 author: Marlowe
-date: 2021-05-05 17:09:18
-tags: 
+tags:
   - Java
   - 书籍
   - 学习
 categories: 随笔
+abbrlink: 41808
+date: 2021-05-05 17:09:18
 ---
 
 列举一些接下来要读的书单...
