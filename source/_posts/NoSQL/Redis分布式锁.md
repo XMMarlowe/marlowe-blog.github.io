@@ -1,9 +1,10 @@
 ---
 title: Redis分布式锁
 author: Marlowe
-date: 2021-05-06 16:55:54
 tags: Redis
 categories: NoSQL
+abbrlink: 64631
+date: 2021-05-06 16:55:54
 ---
 
 <!--more-->

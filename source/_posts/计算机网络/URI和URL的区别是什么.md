@@ -1,11 +1,12 @@
 ---
 title: URI和URL的区别是什么?
 author: Marlowe
-date: 2021-05-06 16:29:14
 tags:
   - URL
   - URI
 categories: 计算机网络
+abbrlink: 483
+date: 2021-05-06 16:29:14
 ---
 
 <!--more-->

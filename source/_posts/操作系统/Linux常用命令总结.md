@@ -1,11 +1,12 @@
 ---
 title: Linux常用命令总结
 author: Marlowe
-date: 2021-05-06 22:20:52
-tags: 
+tags:
   - Linux
   - 命令
 categories: 操作系统
+abbrlink: 35817
+date: 2021-05-06 22:20:52
 ---
 
 <!--more-->
