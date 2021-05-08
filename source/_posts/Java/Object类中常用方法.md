@@ -16,7 +16,7 @@ date: 2021-04-23 22:04:31
 编译器默认调用toString()方法输出对象，但输出的是对象的地址，我们并不能看懂它的意思。那么就要通过重写Object类的toString()方法来输出对象属性信息。
 
 ### 对象相等判断方法：equals()
-public boolean equals(Object obj);用于比较当前对象与目标对象是否相等，默认是比较引用是否指向同一对象。为public方法，子类可重写。
+public boolean equals(Object obj);用于比较当前对象与目标对象是否相等，**默认是比较引用是否指向同一对象**。为public方法，子类可重写。
 
 ```java
 public class Object{
@@ -25,9 +25,12 @@ public class Object{
     }
 }
 ```
+
 **为什么需要重写equals方法？**
 
 因为如果不重写equals方法，当将自定义对象放到map或者set中时；如果这时两个对象的hashCode相同，就会调用equals方法进行比较，这个时候会调用Object中默认的equals方法，而默认的equals方法只是比较了两个对象的引用是否指向了同一个对象，显然大多数时候都不会指向，这样就会将重复对象存入map或者set中。这就 破坏了map与set不能存储重复对象的特性，会造成内存溢出 。
+
+
 
 **重写equals方法的几条约定：**
 
@@ -44,7 +47,7 @@ public class Object{
 
 ### 对象签名:hashCode()
 
-该方法用来返回其所在对象的物理地址（哈希码值），常会和equals方法同时重写，确保相等的两个对象拥有相等的.hashCode。
+该方法用来返回其所在对象的物理地址（哈希码值），常会和equals方法同时重写，确保相等的两个对象拥有相等的hashCode。
 
 public native int hashCode();这是一个public的方法，所以 子类可以重写 它。这个方法返回当前对象的hashCode值，这个值是一个整数范围内的（-2^31 ~ 2^31 - 1）数字。
 
