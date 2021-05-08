@@ -1,11 +1,12 @@
 ---
 title: Redis6.0 相关问题
 author: Marlowe
-date: 2021-05-07 12:55:58
-tags: 
+tags:
   - Redis
   - 多线程
 categories: NoSQL
+abbrlink: 16196
+date: 2021-05-07 12:55:58
 ---
 
 <!--more-->

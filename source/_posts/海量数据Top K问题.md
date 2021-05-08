@@ -1,9 +1,10 @@
 ---
 title: 海量数据Top K问题
 author: Marlowe
-date: 2021-05-07 13:40:02
 tags: Top K
 categories: 算法与数据结构
+abbrlink: 33494
+date: 2021-05-07 13:40:02
 ---
 问题引入：10亿个数中找出最大的10000个数（top K问题）
 <!--more-->
