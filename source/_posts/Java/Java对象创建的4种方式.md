@@ -1,9 +1,10 @@
 ---
 title: Java对象创建的4种方式
 author: Marlowe
-date: 2021-05-08 21:42:11
 tags: 对象
 categories: Java
+abbrlink: 27099
+date: 2021-05-08 21:42:11
 ---
 
 <!--more-->

@@ -1,9 +1,10 @@
 ---
 title: 如何在List种移除元素
 author: Marlowe
-date: 2021-05-08 22:01:59
 tags: List
 categories: java
+abbrlink: 17758
+date: 2021-05-08 22:01:59
 ---
 
 <!--more-->

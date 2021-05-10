@@ -1,11 +1,12 @@
 ---
 title: hashCode()与 equals()相关问题
 author: Marlowe
-date: 2021-05-08 21:29:19
 tags:
   - hashcode
   - equals
 categories: Java
+abbrlink: 51318
+date: 2021-05-08 21:29:19
 ---
 
 <!--more-->

@@ -168,8 +168,26 @@ passwd命令用于设置用户的认证信息，包括用户密码、密码过�
 
 * sudo + 其他命令：以系统管理者的身份执行指令，也就是说，经由 sudo 所执行的指令就好像是 root 亲自执行。
 
+**awk、sed、grep更适合的方向：**
+
+* grep 更适合单纯的查找或匹配文本
+* sed 更适合编辑匹配到的文本
+* awk 更适合格式化文本，对文本进行较复杂格式处理
+
+--- 
+
 * grep 要搜索的字符串 要搜索的文件 --color： 搜索命令，--color 代表高亮显示
 
+* sed 
+```bash
+sed [-hnV][-e<script>][-f<script文件>][文本文件]
+```
+* awk
+```bash
+awk [选项参数] 'script' var=value file(s)
+或
+awk [选项参数] -f scriptfile var=value file(s)
+```
 * ps -ef/ps -aux： 这两个命令都是查看当前系统正在运行进程，两者的区别是展示格式不同。如果想要查看特定的进程可以使用这样的格式：**ps aux|grep redis** （查看包括 redis 字符串的进程），也可使用 pgrep redis -a。
 
 注意：如果直接用 ps（（Process Status））命令，会显示所有进程的状态，通常结合 grep 命令查看某进程的状态。
@@ -193,8 +211,6 @@ passwd命令用于设置用户的认证信息，包括用户密码、密码过�
 
     **du(disk usage)**
     **df 以磁盘分区为单位查看文件系统，可以获取硬盘被占用了多少空间，目前还剩下多少空间等信息。**
-
-
 
 
 * net-tools 和 iproute2 ： net-tools起源于 BSD 的 TCP/IP 工具箱，后来成为老版本 LinuxLinux 中配置网络功能的工具。但自 2001 年起，Linux 社区已经对其停止维护。同时，一些 Linux 发行版比如 Arch Linux 和 CentOS/RHEL 7 则已经完全抛弃了 net-tools，只支持iproute2。linux ip 命令类似于 ifconfig，但功能更强大，旨在替代它。更多详情请阅读如何在 Linux 中使用 IP 命令和示例
