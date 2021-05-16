@@ -1,11 +1,12 @@
 ---
 title: 获取class对象六种方法
 author: Marlowe
-date: 2021-05-10 15:52:02
-tags: 
+tags:
   - Java
   - 对象
 categories: Java
+abbrlink: 18735
+date: 2021-05-10 15:52:02
 ---
 
 <!--more-->

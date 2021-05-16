@@ -1,9 +1,10 @@
 ---
 title: MySQL一些规范以及优化问题
 author: Marlowe
-date: 2021-05-10 16:14:20
 tags: MySQL
 categories: 数据库
+abbrlink: 52473
+date: 2021-05-10 16:14:20
 ---
 
 <!--more-->

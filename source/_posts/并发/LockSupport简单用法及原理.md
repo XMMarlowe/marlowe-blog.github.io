@@ -1,9 +1,10 @@
 ---
 title: LockSupport简单用法及原理
 author: Marlowe
-date: 2021-05-10 11:20:48
 tags: LockSupport
 categories: 并发
+abbrlink: 10165
+date: 2021-05-10 11:20:48
 ---
 
 <!--more-->

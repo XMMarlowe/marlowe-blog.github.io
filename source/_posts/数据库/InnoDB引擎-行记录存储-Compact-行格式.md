@@ -1,11 +1,12 @@
 ---
 title: InnoDB引擎 - 行记录存储 - Compact 行格式
 author: Marlowe
-date: 2021-05-09 16:28:43
-tags: 
+tags:
   - InnoDB
   - Compact
 categories: 数据库
+abbrlink: 3167
+date: 2021-05-09 16:28:43
 ---
 
 待完善...

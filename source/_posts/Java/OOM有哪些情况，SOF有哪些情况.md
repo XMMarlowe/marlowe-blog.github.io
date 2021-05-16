@@ -1,11 +1,12 @@
 ---
 title: OOM有哪些情况，SOF有哪些情况
 author: Marlowe
-date: 2021-05-09 10:12:27
-tags: 
+tags:
   - OOM
   - SOF
 categories: Java
+abbrlink: 54630
+date: 2021-05-09 10:12:27
 ---
 
 <!--more-->

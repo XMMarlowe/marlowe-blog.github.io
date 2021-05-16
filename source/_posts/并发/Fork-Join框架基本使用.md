@@ -1,9 +1,10 @@
 ---
 title: Fork/Join框架基本使用
 author: Marlowe
-date: 2021-05-10 16:56:53
 tags: ForkJoin
 categories: 并发
+abbrlink: 57853
+date: 2021-05-10 16:56:53
 ---
 
 <!--more-->

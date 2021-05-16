@@ -1,11 +1,12 @@
 ---
 title: Java序列化与反序列化
 author: Marlowe
-date: 2021-05-09 10:36:43
-tags: 
+tags:
   - 序列化
   - 反序列化
 categories: Java
+abbrlink: 3426
+date: 2021-05-09 10:36:43
 ---
 
 <!--more-->

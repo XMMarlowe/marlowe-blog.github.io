@@ -59,7 +59,8 @@ MSL（Maximum Segment Lifetime），TCP允许不同的实现可以设置不同�
 **第二**，防止类似与“三次握手”中提到了的“已经失效的连接请求报文段”出现在本连接中。客户端发送完最后一个确认报文后，在这个2MSL时间中，就可以使本连接持续的时间内所产生的所有报文段都从网络中消失。这样新的连接中不会出现旧连接的请求报文。
 
 
-### TIME_WAIT 状态产生的原因
+### TIME_WAIT(主动关闭方) 状态产生的原因
+
 **1）为实现TCP全双工连接的可靠释放**
 
 由TCP状态变迁图可知，假设**发起主动关闭的一方**（client）最后发送的ACK在网络中丢失，由于TCP协议的重传机制，**执行被动关闭的一方**（server）将会重发其FIN，在该FIN到达client之前，client必须维护这条连接状态，也就说这条TCP连接所对应的资源（client方的local_ip,local_port）不能被立即释放或重新分配，直到另一方重发的FIN达到之后，client重发ACK后，经过2MSL时间周期没有再收到另一方的FIN之后，该TCP连接才能恢复初始的CLOSED状态。如果主动关闭一方不维护这样一个TIME_WAIT状态，那么当被动关闭一方重发的FIN到达时，主动关闭一方的TCP传输层会用RST包响应对方，这会被对方认为是有错误发生，然而这事实上只是正常的关闭连接过程，并非异常。
@@ -71,7 +72,40 @@ MSL（Maximum Segment Lifetime），TCP允许不同的实现可以设置不同�
 **3）总结**
 具体而言，local peer主动调用close后，此时的TCP连接进入TIME_WAIT状态，处于该状态下的TCP连接不能立即以同样的四元组建立新连接，即发起active close的那方占用的local port在TIME_WAIT期间不能再被重新分配。由于TIME_WAIT状态持续时间为2MSL，这样保证了旧TCP连接双工链路中的旧数据包均因过期（超过MSL）而消失，此后，就可以用相同的四元组建立一条新连接而不会发生前后两次连接数据错乱的情况。
 
+### 解决出现大量TIME_WAIT情况的方法
+
+对/etc/sysctl.conf文件进行修改：
+
+```bash
+#对于一个新建连接，内核要发送多少个 SYN 连接请求才决定放弃,不应该大于255，默认值是5，对应于180秒左右时间   
+net.ipv4.tcp_syn_retries=2  
+#net.ipv4.tcp_synack_retries=2  
+#表示当keepalive起用的时候，TCP发送keepalive消息的频度。缺省是2小时，改为300秒  
+net.ipv4.tcp_keepalive_time=1200  
+net.ipv4.tcp_orphan_retries=3  
+#表示如果套接字由本端要求关闭，这个参数决定了它保持在FIN-WAIT-2状态的时间  
+net.ipv4.tcp_fin_timeout=30    
+#表示SYN队列的长度，默认为1024，加大队列长度为8192，可以容纳更多等待连接的网络连接数。  
+net.ipv4.tcp_max_syn_backlog = 4096  
+#表示开启SYN Cookies。当出现SYN等待队列溢出时，启用cookies来处理，可防范少量SYN攻击，默认为0，表示关闭  
+net.ipv4.tcp_syncookies = 1  
+  
+#表示开启重用。允许将TIME-WAIT sockets重新用于新的TCP连接，默认为0，表示关闭  
+net.ipv4.tcp_tw_reuse = 1  
+#表示开启TCP连接中TIME-WAIT sockets的快速回收，默认为0，表示关闭  
+net.ipv4.tcp_tw_recycle = 1  
+  
+##减少超时前的探测次数   
+net.ipv4.tcp_keepalive_probes=5   
+##优化网络设备接收队列   
+net.core.netdev_max_backlog=3000   
+```
+
 ### Closed状态。。。。
+
+### CLOSE_WAIT(被动关闭方) 状态
+
+这种状态的含义其实是表示在等待关闭。怎么理解呢？当对方close一个SOCKET后发送FIN报文给自己，你系统毫无疑问地会回应一个ACK报文给对方，此时则进入到CLOSE_WAIT状态。接下来呢，实际上你真正需要考虑的事情是察看你是否还有数据发送给对方，如果没有的话，那么你也就可以 close这个SOCKET，发送FIN报文给对方，也即关闭连接。所以你在CLOSE_WAIT状态下，需要完成的事情是等待你去关闭连接。（被动方）
 
 
 ### 为什么建立连接是三次握手，关闭连接确是四次挥手呢？

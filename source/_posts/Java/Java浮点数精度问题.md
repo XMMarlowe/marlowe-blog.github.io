@@ -1,11 +1,12 @@
 ---
 title: Java浮点数精度问题
 author: Marlowe
-date: 2021-05-10 16:07:00
-tags: 
+tags:
   - Java
   - 精度
 categories: Java
+abbrlink: 180
+date: 2021-05-10 16:07:00
 ---
 
 <!--more-->
