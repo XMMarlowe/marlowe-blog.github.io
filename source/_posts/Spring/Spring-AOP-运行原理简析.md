@@ -1,11 +1,12 @@
 ---
 title: Spring AOP 运行原理简析
 author: Marlowe
-date: 2021-05-16 17:06:14
-tags: 
+tags:
   - Spring
   - AOP
 categories: Spring
+abbrlink: 28650
+date: 2021-05-16 17:06:14
 ---
 
 <!--more-->

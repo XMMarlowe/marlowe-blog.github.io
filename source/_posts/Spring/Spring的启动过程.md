@@ -1,9 +1,10 @@
 ---
 title: Spring的启动过程
 author: Marlowe
-date: 2021-05-16 15:51:21
 tags: Spring
 categories: Spring
+abbrlink: 34967
+date: 2021-05-16 15:51:21
 ---
 
 <!--more-->
@@ -164,6 +165,40 @@ servletContext.setAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_A
 ### 启动流程图
 
 ![20210516155634](http://marlowe.oss-cn-beijing.aliyuncs.com/img/20210516155634.png)
+
+### Spring 启动过程
+
+使用AnnotationConfigApplicationContext来跟踪一下启动流程:
+* **this()：** 初始化reader和scanner
+* **scan(basePackages)：** 使用scanner组件扫描basePackage下的所有对象，将配置类的BeanDefinition注册到容器中。
+* **refresh()：** 刷新容器。
+
+**prepareRefresh：** 刷新前的预处理
+
+**obtainFreshBeanFactory:** 获取在容器初始化时创建的BeanFactory
+
+**prepareBeanFactory:** BeanFactory的预处理工作，会向容器中添加一些组件。
+
+**postProcessBeanFactory:** 子类重写该方法， 可以实现在BeanFactory创建并预处理完成后做进一步的设置。
+
+**invokeBeanFactoryPostProcessors:** 在BeanFactory初始化之 后执行BeanFactory的后处理器。
+
+**registerBeanPostProcessors:** 向容器中注册Bean的后处理器 ，他的主要作用就是干预Spring初始化Bean的流程， 完成代理、自动注入、循环依赖等这些功能。
+
+**initMessageSource:** 初始化messagesource组件， 主要用于国际化。
+
+**initApplicationEventMulticaster:** 初始化事件分发器
+
+**onRefresh:** 留给子容器，子类重写的方法，在容器刷新的时候可以自定义一些逻辑。
+
+**registerListeners:** 注册监听器。
+
+**finishBeanFactoryInitialization:** 完成BeanFactory的初始化， 主要作用是初始化所有剩下的单例Bean。
+
+**finishRefresh:** 完成整个容器的初始化，发布BeanFactory容器刷新完成的事件。|
+
+
+
 
 
 ### 总结

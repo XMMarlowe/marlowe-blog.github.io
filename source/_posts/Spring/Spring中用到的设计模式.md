@@ -1,11 +1,12 @@
 ---
 title: Spring中用到的设计模式
 author: Marlowe
-date: 2021-05-16 10:22:58
-tags: 
+tags:
   - Spring
   - 设计模式
 categories: Spring
+abbrlink: 48454
+date: 2021-05-16 10:22:58
 ---
 
 简单聊聊Spring中所用到的设计模式...

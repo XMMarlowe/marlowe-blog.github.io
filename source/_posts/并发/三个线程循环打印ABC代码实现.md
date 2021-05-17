@@ -1,11 +1,12 @@
 ---
 title: 三个线程循环打印ABC代码实现
 author: Marlowe
-date: 2021-05-16 21:06:06
-tags: 
+tags:
   - 并发
   - 线程
 categories: 并发
+abbrlink: 46791
+date: 2021-05-16 21:06:06
 ---
 
 三个线程分别打印A，B，C，要求这三个线程一起运行，打印n次，输出形如“ABCABCABC....”的字符串。

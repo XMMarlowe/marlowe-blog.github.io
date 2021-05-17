@@ -144,7 +144,7 @@ synchronized 是依赖于 JVM 实现的，前面我们也讲到了 虚拟机团�
 
 [Synchronized与ReentrantLock](https://blog.unclezs.com/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/Synchronized%E4%B8%8EReentrantLock.html)
 
-
+好文推荐：[带你探索ReentrantLock源码的快乐](https://mp.weixin.qq.com/s?__biz=Mzk0NjE3NDQyOA==&mid=2247483947&idx=1&sn=49261a16b47ecc9e629e7655bb11f10b&chksm=c30b6298f47ceb8eb6724c52b8c6767b43b0b6304acada3f3535e2c5efbef633c0639834f34c&token=1605614249&lang=zh_CN#rd)
 
 
 

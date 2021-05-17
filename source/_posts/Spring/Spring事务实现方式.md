@@ -1,11 +1,12 @@
 ---
 title: Spring事务实现方式
 author: Marlowe
-date: 2021-05-15 20:47:10
 tags:
   - Spring
   - 事务
 categories: Spring
+abbrlink: 1771
+date: 2021-05-15 20:47:10
 ---
 
 <!--more-->

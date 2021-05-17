@@ -1,15 +1,36 @@
 ---
 title: Spring Bean 相关问题
 author: Marlowe
-date: 2021-05-16 11:09:23
 tags:
   - Spring
   - Bean
 categories: Spring
+abbrlink: 23081
+date: 2021-05-16 11:09:23
 ---
 
 <!--more-->
 
+### Spring 中 bean 的创建过程
+
+**首先:** 简单来说，Spring框架中的Bean经过四个阶段:实例化 -> 属性赋值 -> 初始化 -> 销毁
+
+**然后:** 具体来说，Spring中Bean 经过了以下几个步骤:
+
+1. 实例化: new xxx(); 两个时机: 1、当客户端向容器申请一 个Bean时，2、 当容器在初始化一 个Bean时发现还需要依赖另一个Bean。BeanDefinition 对象保存。 -- 到底new一个对象还是创建一个动态代理？
+2. 设置对象属性(依赖注入): Spring通过BeanDefinition找到对象依赖的其他对象，并将这些对象赋予当前对象。
+3. 处理Aware接口: Spring会检测对象是否实现了xxxAware接口，如果实现了，就会调用对应的方法。
+BeanNameAware、BeanClassLoaderAware、 BeanFactoryAware、 ApplicationContextAware
+4. BeanPostProcessor前置处理: 调用BeanPostProcessor的postProcessBeforelnitialization方法
+5. InitializingBean: Spring检测对象如果实现了这个接口， 就会执行他的afterPropertiesSet()方法， 定制初始化逻辑。
+6. init-method: `<bean init-method=xXx>` 如果Spring发现Bean配置了这个属性，就会调用他的配置方法，执行初
+始化逻辑。@PostConstruct
+7. BeanPostProcessor后置处理: 调用BeanPostProcessor的postProcessAfterlnitialization方法
+
+> 到这里，这个Bean的创建过程就完成了，Bean就可以正常使用了。
+
+8. DisposableBean: 当Bean实现了这个接口， 在对象销毁前就会调用destory(方法。
+9. destroy-method: `<bean destroy-method=xxx>` @PreDestroy
 
 ### Spring 中的 bean 的作用域有哪些?
 
@@ -30,6 +51,10 @@ categories: Spring
 
 1. 在类中定义一个 `ThreadLocal` 成员变量，将需要的可变成员变量保存在 `ThreadLocal` 中（推荐的一种方式）。
 2. 改变 Bean 的作用域为 “prototype”：每次请求都会创建一个新的 bean 实例，自然不会存在线程安全问题。
+
+### Spring 框架中的Bean是线程安全的吗？如果线程不安全，要如何处理？
+
+
 
 
 ###  @Component 和 @Bean 的区别是什么？

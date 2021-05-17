@@ -1,9 +1,10 @@
 ---
 title: Condition接口
 author: Marlowe
-date: 2021-05-16 21:33:40
 tags: Condition
 categories: 并发
+abbrlink: 52091
+date: 2021-05-16 21:33:40
 ---
 
 <!--more-->

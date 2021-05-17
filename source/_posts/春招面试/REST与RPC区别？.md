@@ -1,11 +1,12 @@
 ---
 title: REST与RPC区别？
 author: Marlowe
-date: 2021-05-14 17:22:42
-tags: 
+tags:
   - Resuful
   - RPC
 categories: 春招面试
+abbrlink: 60178
+date: 2021-05-14 17:22:42
 ---
 
 <!--more-->
