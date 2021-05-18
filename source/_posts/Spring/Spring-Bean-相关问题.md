@@ -54,6 +54,28 @@ BeanNameAware、BeanClassLoaderAware、 BeanFactoryAware、 ApplicationContextAw
 
 ### Spring 框架中的Bean是线程安全的吗？如果线程不安全，要如何处理？
 
+Spring容器本身没有提供Bean的线程安全策略，因此，也可以说Spring容器中的Bean不是线程安全的。
+
+要如何处理线程安全问题，就要分情况来分析。
+
+**Spring中的作用域:**
+1、sington 
+2、prototype: 为每个Bean请求创建给实例。
+3、request: 为每个request请求创建一个实例，请求完成后失效。
+4、session: 与request是类似的。 
+5、global-session: 全局作用域。
+
+**对于线程安全问题:**
+
+1> 对于prototype作用域，每次都是生成一个新的对象，所以不存在线程安全问题。
+2> sington作用域:默认就是线程不完全的。 但是对于开发中大部分的Bean,其实是无状态的，不需要保证线程安全。所以在平常的MVC开发中，是不会有线程安全问题的。
+
+> 无状态表示这个实例没有属性对象，不能保存数据， 是不变的类。比如: controller. service、 dao
+有状态表示示例是有属性对象，可以保存数据，是线程不安全的，比如pojo.
+
+但是如果要保证线程安全，可以将Bean的作用域改为prototype比如像Model View。
+
+另外还可以采用ThreadLocal来解决线程安全问题。ThreadLocal为每 个线程保存一个副本变量， 每个线程只操作自己的副本变量。
 
 
 

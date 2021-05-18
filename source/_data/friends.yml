@@ -1,6 +1,36 @@
-- group: 好朋友们 # 分组标题
+- group: 学长学姐们 # 分组标题
   description: # 分组描述
   items:
+     - title: Unclezs # 名称
+       avatar: https://blog.unclezs.com/img/avatar.jpg
+       url: https://blog.unclezs.com/
+     
      - title: Luna # 名称
        avatar: https://cdn.jsdelivr.net/gh/moonoonoom/CDN@0.1/images/avatar01.jpg
        url: https://moonoonoom.github.io/
+
+- group: 同学们 # 分组标题
+  description: # 分组描述
+  items:
+
+     - title: chikaze # 名称
+       avatar: https://chikaze73.github.io/img/avatar.png
+       url: https://chikaze73.github.io/
+
+     - title: GodLanBo # 名称
+       avatar: https://godlanbo.com/image/avatar.jpeg
+       url: https://godlanbo.com/home
+
+     - title: 苏伏 # 名称
+       avatar: https://www.sfzzz.top/upload/2021/03/20210317210157-a7488d4cce9542269266cde5dff98de5.jpg
+       url: https://www.sfzzz.top/
+
+
+- group: 大佬们 # 分组标题
+  description: # 分组描述
+  items:
+     
+
+
+     
+  
