@@ -29,6 +29,10 @@
 - group: 大佬们 # 分组标题
   description: # 分组描述
   items:
+     - title: 无妄当自持  # 名称
+       avatar: https://7.dusays.com/2021/05/18/1c3ebb7c14025.png
+       url: https://www.insidentally.com
+
      
 
 
