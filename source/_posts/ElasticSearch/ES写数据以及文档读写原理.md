@@ -1,9 +1,10 @@
 ---
 title: ES写数据以及文档读写原理
 author: Marlowe
-date: 2021-05-19 22:34:02
 tags: ES
 categories: ElasticSearch
+abbrlink: 962
+date: 2021-05-19 22:34:02
 ---
 
 es写入数据的工作原理是什么啊？es查询数据的工作原理是什么？底层的lucence介绍一下呗？倒排索引了解吗？
