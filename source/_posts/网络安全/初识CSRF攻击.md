@@ -1,9 +1,10 @@
 ---
 title: 初识CSRF攻击
 author: Marlowe
-date: 2021-05-20 22:44:30
 tags: CSRF
 categories: 网络安全
+abbrlink: 5207
+date: 2021-05-20 22:44:30
 ---
 
 <!--more-->

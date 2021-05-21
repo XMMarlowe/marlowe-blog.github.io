@@ -57,7 +57,225 @@ HashMap在进行扩容时，使用的rehash方式非常巧妙，因为每次扩�
 
 正是因为这样**巧妙的rehash**方式，既省去了重新计算hash值的时间，而且同时，由于新增的1bit是0还是1可以认为是随机的，在resize的过程中保证了rehash之后每个桶上的节点数一定小于等于原来桶上的节点数，保证了rehash之后不会出现更严重的hash冲突，均匀的把之前的冲突的节点分散到新的桶中了。
 
-### resize()方法源码：
+### HashMap源码分析
+
+#### 构造方法
+
+HashMap 中有四个构造方法，它们分别如下：
+
+```java
+    // 默认构造函数。
+    public HashMap() {
+        this.loadFactor = DEFAULT_LOAD_FACTOR; // all   other fields defaulted
+     }
+
+     // 包含另一个“Map”的构造函数
+     public HashMap(Map<? extends K, ? extends V> m) {
+         this.loadFactor = DEFAULT_LOAD_FACTOR;
+         putMapEntries(m, false);//下面会分析到这个方法
+     }
+
+     // 指定“容量大小”的构造函数
+     public HashMap(int initialCapacity) {
+         this(initialCapacity, DEFAULT_LOAD_FACTOR);
+     }
+
+     // 指定“容量大小”和“加载因子”的构造函数
+     public HashMap(int initialCapacity, float loadFactor) {
+         if (initialCapacity < 0)
+             throw new IllegalArgumentException("Illegal initial capacity: " + initialCapacity);
+         if (initialCapacity > MAXIMUM_CAPACITY)
+             initialCapacity = MAXIMUM_CAPACITY;
+         if (loadFactor <= 0 || Float.isNaN(loadFactor))
+             throw new IllegalArgumentException("Illegal load factor: " + loadFactor);
+         this.loadFactor = loadFactor;
+         this.threshold = tableSizeFor(initialCapacity);
+     }
+```
+
+**putMapEntries 方法：**
+
+```java
+final void putMapEntries(Map<? extends K, ? extends V> m, boolean evict) {
+    int s = m.size();
+    if (s > 0) {
+        // 判断table是否已经初始化
+        if (table == null) { // pre-size
+            // 未初始化，s为m的实际元素个数
+            float ft = ((float)s / loadFactor) + 1.0F;
+            int t = ((ft < (float)MAXIMUM_CAPACITY) ?
+                    (int)ft : MAXIMUM_CAPACITY);
+            // 计算得到的t大于阈值，则初始化阈值
+            if (t > threshold)
+                threshold = tableSizeFor(t);
+        }
+        // 已初始化，并且m元素个数大于阈值，进行扩容处理
+        else if (s > threshold)
+            resize();
+        // 将m中的所有元素添加至HashMap中
+        for (Map.Entry<? extends K, ? extends V> e : m.entrySet()) {
+            K key = e.getKey();
+            V value = e.getValue();
+            putVal(hash(key), key, value, false, evict);
+        }
+    }
+}
+```
+
+#### put 方法
+
+HashMap 只提供了 put 用于添加元素，putVal 方法只是给 put 方法调用的一个方法，并没有提供给用户使用。
+
+**对 putVal 方法添加元素的分析如下：**
+
+1. 如果定位到的数组位置没有元素 就直接插入。
+2. 如果定位到的数组位置有元素就和要插入的 key 比较，如果 key 相同就直接覆盖，如果 key 不相同，就判断 p 是否是一个树节点，如果是就调用`e = ((TreeNode<K,V>)p).putTreeVal(this, tab, hash, key, value)`将元素添加进入。如果不是就遍历链表插入(插入的是链表尾部)。
+
+```java
+public V put(K key, V value) {
+    return putVal(hash(key), key, value, false, true);
+}
+
+final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
+                   boolean evict) {
+    Node<K,V>[] tab; Node<K,V> p; int n, i;
+    // table未初始化或者长度为0，进行扩容
+    if ((tab = table) == null || (n = tab.length) == 0)
+        n = (tab = resize()).length;
+    // (n - 1) & hash 确定元素存放在哪个桶中，桶为空，新生成结点放入桶中(此时，这个结点是放在数组中)
+    if ((p = tab[i = (n - 1) & hash]) == null)
+        tab[i] = newNode(hash, key, value, null);
+    // 桶中已经存在元素
+    else {
+        Node<K,V> e; K k;
+        // 比较桶中第一个元素(数组中的结点)的hash值相等，key相等
+        if (p.hash == hash &&
+            ((k = p.key) == key || (key != null && key.equals(k))))
+                // 将第一个元素赋值给e，用e来记录
+                e = p;
+        // hash值不相等，即key不相等；为红黑树结点
+        else if (p instanceof TreeNode)
+            // 放入树中
+            e = ((TreeNode<K,V>)p).putTreeVal(this, tab, hash, key, value);
+        // 为链表结点
+        else {
+            // 在链表最末插入结点
+            for (int binCount = 0; ; ++binCount) {
+                // 到达链表的尾部
+                if ((e = p.next) == null) {
+                    // 在尾部插入新结点
+                    p.next = newNode(hash, key, value, null);
+                    // 结点数量达到阈值(默认为 8 )，执行 treeifyBin 方法
+                    // 这个方法会根据 HashMap 数组来决定是否转换为红黑树。
+                    // 只有当数组长度大于或者等于 64 的情况下，才会执行转换红黑树操作，以减少搜索时间。否则，就是只是对数组扩容。
+                    if (binCount >= TREEIFY_THRESHOLD - 1) // -1 for 1st
+                        treeifyBin(tab, hash);
+                    // 跳出循环
+                    break;
+                }
+                // 判断链表中结点的key值与插入的元素的key值是否相等
+                if (e.hash == hash &&
+                    ((k = e.key) == key || (key != null && key.equals(k))))
+                    // 相等，跳出循环
+                    break;
+                // 用于遍历桶中的链表，与前面的e = p.next组合，可以遍历链表
+                p = e;
+            }
+        }
+        // 表示在桶中找到key值、hash值与插入元素相等的结点
+        if (e != null) {
+            // 记录e的value
+            V oldValue = e.value;
+            // onlyIfAbsent为false或者旧值为null
+            if (!onlyIfAbsent || oldValue == null)
+                //用新值替换旧值
+                e.value = value;
+            // 访问后回调
+            afterNodeAccess(e);
+            // 返回旧值
+            return oldValue;
+        }
+    }
+    // 结构性修改
+    ++modCount;
+    // 实际大小大于阈值则扩容
+    if (++size > threshold)
+        resize();
+    // 插入后回调
+    afterNodeInsertion(evict);
+    return null;
+}
+```
+
+**我们再来对比一下 JDK1.7 put 方法的代码**
+
+**对于 put 方法的分析如下：**
+
+① 如果定位到的数组位置没有元素 就直接插入。
+② 如果定位到的数组位置有元素，遍历以这个元素为头结点的链表，依次和插入的 key 比较，如果 key 相同就直接覆盖，不同就采用头插法插入元素。
+
+```java
+public V put(K key, V value)
+    if (table == EMPTY_TABLE) {
+    inflateTable(threshold);
+}
+    if (key == null)
+        return putForNullKey(value);
+    int hash = hash(key);
+    int i = indexFor(hash, table.length);
+    for (Entry<K,V> e = table[i]; e != null; e = e.next) { // 先遍历
+        Object k;
+        if (e.hash == hash && ((k = e.key) == key || key.equals(k))) {
+            V oldValue = e.value;
+            e.value = value;
+            e.recordAccess(this);
+            return oldValue;
+        }
+    }
+
+    modCount++;
+    addEntry(hash, key, value, i);  // 再插入
+    return null;
+}
+```
+
+#### get 方法
+
+```java
+public V get(Object key) {
+    Node<K,V> e;
+    return (e = getNode(hash(key), key)) == null ? null : e.value;
+}
+
+final Node<K,V> getNode(int hash, Object key) {
+    Node<K,V>[] tab; Node<K,V> first, e; int n; K k;
+    if ((tab = table) != null && (n = tab.length) > 0 &&
+        (first = tab[(n - 1) & hash]) != null) {
+        // 数组元素相等
+        if (first.hash == hash && // always check first node
+            ((k = first.key) == key || (key != null && key.equals(k))))
+            return first;
+        // 桶中不止一个节点
+        if ((e = first.next) != null) {
+            // 在树中get
+            if (first instanceof TreeNode)
+                return ((TreeNode<K,V>)first).getTreeNode(hash, key);
+            // 在链表中get
+            do {
+                if (e.hash == hash &&
+                    ((k = e.key) == key || (key != null && key.equals(k))))
+                    return e;
+            } while ((e = e.next) != null);
+        }
+    }
+    return null;
+}
+```
+
+#### resize()方法源码
+
+进行扩容，会伴随着一次重新 hash 分配，并且会遍历 hash 表中所有的元素，是非常耗时的。在编写程序中，要尽量避免 resize。
+
 ```java
 final Node<K,V>[] resize() {
     //得到当前数组
@@ -165,6 +383,214 @@ final Node<K,V>[] resize() {
     return newTab;
 }
 ```
+
+#### treeifyBin方法
+
+```java
+final void treeifyBin(Node<K, V>[] tab, int hash)
+    {
+        int n, index;
+        Node<K, V> e;
+        if (tab == null || (n = tab.length) < MIN_TREEIFY_CAPACITY)
+            // resize()方法这里不过多介绍，感兴趣的可以去看上面的链接。
+            resize();
+        // 通过hash求出bucket的位置。
+        else if ((e = tab[index = (n - 1) & hash]) != null)
+        {
+            TreeNode<K, V> hd = null, tl = null;
+            do
+            {
+                // 将每个节点包装成TreeNode。
+                TreeNode<K, V> p = replacementTreeNode(e, null);
+                if (tl == null)
+                    hd = p;
+                else
+                {
+                    // 将所有TreeNode连接在一起此时只是链表结构。
+                    p.prev = tl;
+                    tl.next = p;
+                }
+                tl = p;
+            } while ((e = e.next) != null);
+            if ((tab[index] = hd) != null)
+                // 对TreeNode链表进行树化。
+                hd.treeify(tab);
+        }
+    }
+```
+
+#### treeify方法
+
+```java
+final void treeify(Node<K, V>[] tab)
+    {
+        TreeNode<K, V> root = null;
+        // 以for循环的方式遍历刚才我们创建的链表。
+        for (TreeNode<K, V> x = this, next; x != null; x = next)
+        {
+            // next向前推进。
+            next = (TreeNode<K, V>) x.next;
+            x.left = x.right = null;
+            // 为树根节点赋值。
+            if (root == null)
+            {
+                x.parent = null;
+                x.red = false;
+                root = x;
+            } else
+            {
+                // x即为当前访问链表中的项。
+                K k = x.key;
+                int h = x.hash;
+                Class<?> kc = null;
+                // 此时红黑树已经有了根节点，上面获取了当前加入红黑树的项的key和hash值进入核心循环。
+                // 这里从root开始，是以一个自顶向下的方式遍历添加。
+                // for循环没有控制条件，由代码内break跳出循环。
+                for (TreeNode<K, V> p = root;;)
+                {
+                    // dir：directory，比较添加项与当前树中访问节点的hash值判断加入项的路径，-1为左子树，+1为右子树。
+                    // ph：parent hash。
+                    int dir, ph;
+                    K pk = p.key;
+                    if ((ph = p.hash) > h)
+                        dir = -1;
+                    else if (ph < h)
+                        dir = 1;
+                    else if ((kc == null && (kc = comparableClassFor(k)) == null)
+                            || (dir = compareComparables(kc, k, pk)) == 0)
+                        dir = tieBreakOrder(k, pk);
+
+                    // xp：x parent。
+                    TreeNode<K, V> xp = p;
+                    // 找到符合x添加条件的节点。
+                    if ((p = (dir <= 0) ? p.left : p.right) == null)
+                    {
+                        x.parent = xp;
+                        // 如果xp的hash值大于x的hash值，将x添加在xp的左边。
+                        if (dir <= 0)
+                            xp.left = x;
+                        // 反之添加在xp的右边。
+                        else
+                            xp.right = x;
+                        // 维护添加后红黑树的红黑结构。
+                        root = balanceInsertion(root, x);
+                        
+                        // 跳出循环当前链表中的项成功的添加到了红黑树中。
+                        break;
+                    }
+                }
+            }
+        }
+        // Ensures that the given root is the first node of its bin，自己翻译一下。
+        moveRootToFront(tab, root);
+    }
+```
+
+第一次循环会将链表中的首节点作为红黑树的根，而后的循环会将链表中的的项通过比较hash值然后连接到相应树节点的左边或者右边，插入可能会破坏树的结构所以接着执行balanceInsertion。
+
+#### balanceInsertion方法
+
+```java
+static <K, V> TreeNode<K, V> balanceInsertion(TreeNode<K, V> root, TreeNode<K, V> x)
+    {
+        // 正如开头所说，新加入树节点默认都是红色的，不会破坏树的结构。
+        x.red = true;
+        // 这些变量名不是作者随便定义的都是有意义的。
+        // xp：x parent，代表x的父节点。
+        // xpp：x parent parent，代表x的祖父节点
+        // xppl：x parent parent left，代表x的祖父的左节点。
+        // xppr：x parent parent right，代表x的祖父的右节点。
+        for (TreeNode<K, V> xp, xpp, xppl, xppr;;)
+        {
+            // 如果x的父节点为null说明只有一个节点，该节点为根节点，根节点为黑色，red = false。
+            if ((xp = x.parent) == null)
+            {
+                x.red = false;
+                return x;
+            } 
+            // 进入else说明不是根节点。
+            // 如果父节点是黑色，那么大吉大利（今晚吃鸡），红色的x节点可以直接添加到黑色节点后面，返回根就行了不需要任何多余的操作。
+            // 如果父节点是红色的，但祖父节点为空的话也可以直接返回根此时父节点就是根节点，因为根必须是黑色的，添加在后面没有任何问题。
+            else if (!xp.red || (xpp = xp.parent) == null)
+                return root;
+            
+            // 一旦我们进入到这里就说明了两件是情
+            // 1.x的父节点xp是红色的，这样就遇到两个红色节点相连的问题，所以必须经过旋转变换。
+            // 2.x的祖父节点xpp不为空。
+            
+            // 判断如果父节点是否是祖父节点的左节点
+            if (xp == (xppl = xpp.left))
+            {
+                // 父节点xp是祖父的左节点xppr
+                // 判断祖父节点的右节点不为空并且是否是红色的
+                // 此时xpp的左右节点都是红的，所以直接进行上面所说的第三种变换，将两个子节点变成黑色，将xpp变成红色，然后将红色节点x顺利的添加到了xp的后面。
+                // 这里大家有疑问为什么将x = xpp？
+                // 这是由于将xpp变成红色以后可能与xpp的父节点发生两个相连红色节点的冲突，这就又构成了第二种旋转变换，所以必须从底向上的进行变换，直到根。
+                // 所以令x = xpp，然后进行下下一层循环，接着往上走。
+                if ((xppr = xpp.right) != null && xppr.red)
+                {
+                    xppr.red = false;
+                    xp.red = false;
+                    xpp.red = true;
+                    x = xpp;
+                }
+                // 进入到这个else里面说明。
+                // 父节点xp是祖父的左节点xppr。
+                // 祖父节点xpp的右节点xppr是黑色节点或者为空，默认规定空节点也是黑色的。
+                // 下面要判断x是xp的左节点还是右节点。
+                else
+                {
+                    // x是xp的右节点，此时的结构是：xpp左->xp右->x。这明显是第二中变换需要进行两次旋转，这里先进行一次旋转。
+                    // 下面是第一次旋转。
+                    if (x == xp.right)
+                    {
+                        root = rotateLeft(root, x = xp);
+                        xpp = (xp = x.parent) == null ? null : xp.parent;
+                    }
+                    // 针对本身就是xpp左->xp左->x的结构或者由于上面的旋转造成的这种结构进行一次旋转。
+                    if (xp != null)
+                    {
+                        xp.red = false;
+                        if (xpp != null)
+                        {
+                            xpp.red = true;
+                            root = rotateRight(root, xpp);
+                        }
+                    }
+                }
+            } 
+            // 这里的分析方式和前面的相对称只不过全部在右测不再重复分析。
+            else
+            {
+                if (xppl != null && xppl.red)
+                {
+                    xppl.red = false;
+                    xp.red = false;
+                    xpp.red = true;
+                    x = xpp;
+                } else
+                {
+                    if (x == xp.left)
+                    {
+                        root = rotateRight(root, x = xp);
+                        xpp = (xp = x.parent) == null ? null : xp.parent;
+                    }
+                    if (xp != null)
+                    {
+                        xp.red = false;
+                        if (xpp != null)
+                        {
+                            xpp.red = true;
+                            root = rotateLeft(root, xpp);
+                        }
+                    }
+                }
+            }
+        }
+    }
+```
+
+
 
 ### 参考
 [面试题：HashMap扩容机制](https://blog.csdn.net/qq_29860591/article/details/113726055)

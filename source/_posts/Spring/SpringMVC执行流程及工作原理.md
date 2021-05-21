@@ -31,7 +31,7 @@ SpringMVC执行流程
 11. DispatcherServlet响应用户。
 
 
-### 组件说明：
+### 组件说明
 
 1. **DispatcherServlet：前端控制器**。用户请求到达前端控制器，它就相当于mvc模式中的c，dispatcherServlet是整个流程控制的中心，由它调用其它组件处理用户的请求，dispatcherServlet的存在降低了组件之间的耦合性,系统扩展性提高。由框架实现
 2. **HandlerMapping：处理器映射器**。HandlerMapping负责根据用户请求的url找到Handler即处理器，springmvc提供了不同的映射器实现不同的映射方式，根据一定的规则去查找,例如：xml配置方式，实现接口方式，注解方式等。由框架实现
