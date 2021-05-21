@@ -1,9 +1,10 @@
 ---
 title: Java四种引用-强、软、弱、虚
 author: Marlowe
-date: 2021-05-21 22:28:04
 tags: Java
 categories: Java
+abbrlink: 57806
+date: 2021-05-21 22:28:04
 ---
 
 <!--more-->

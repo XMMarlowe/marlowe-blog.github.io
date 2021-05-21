@@ -1,11 +1,12 @@
 ---
 title: MySQL长连接、短连接、连接池
 author: Marlowe
-date: 2021-05-21 21:40:42
-tags: 
+tags:
   - MySQL
   - 连接池
 categories: 数据库
+abbrlink: 22796
+date: 2021-05-21 21:40:42
 ---
 
 <!--more-->
