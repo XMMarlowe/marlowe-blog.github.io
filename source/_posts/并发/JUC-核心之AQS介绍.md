@@ -113,3 +113,5 @@ AQS底层是通过一个状态量State记录当前同步器的状态，这个状
 [AQS](https://snailclimb.gitee.io/javaguide/#/docs/java/multi-thread/2020%E6%9C%80%E6%96%B0Java%E5%B9%B6%E5%8F%91%E8%BF%9B%E9%98%B6%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93?id=_6-aqs)
 
 [JUC：AQS详解](https://www.pdai.tech/md/java/thread/java-thread-x-lock-AbstractQueuedSynchronizer.html)
+
+好文推荐：[【深入AQS原理】我画了35张图就是为了让你深入 AQS](https://juejin.cn/post/6844904146127044622)
