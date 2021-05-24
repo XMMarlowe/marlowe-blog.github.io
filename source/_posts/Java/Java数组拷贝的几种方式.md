@@ -1,11 +1,12 @@
 ---
 title: Java数组拷贝的几种方式
 author: Marlowe
-date: 2021-05-23 16:48:25
-tags: 
+tags:
   - Java
   - 数组
 categories: Java
+abbrlink: 6424
+date: 2021-05-23 16:48:25
 ---
 目前在Java中数据拷贝提供了如下方式：1、clone 2、System.arraycopy 3、Arrays.copyOf 4、Arrays.copyOfRange。
 <!--more-->
@@ -202,20 +203,5 @@ public Dog myClone() {
 
 ### 参考
 
-[Java - 数组拷贝的几种方式](https://blog.csdn.net/u011669700/article/details/79323251)
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 参考
 [Java - 数组拷贝的几种方式](https://blog.csdn.net/u011669700/article/details/79323251)
 
