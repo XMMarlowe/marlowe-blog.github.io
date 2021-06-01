@@ -2,7 +2,7 @@
 title: 常见的IO模型有哪些？Java中的BIO，NIO，AIO的区别
 author: Marlowe
 tags: I/O模型
-categories: Java
+categories: 操作系统
 abbrlink: 28269
 date: 2020-03-15 14:22:22
 ---

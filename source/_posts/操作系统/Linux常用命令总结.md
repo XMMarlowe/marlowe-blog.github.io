@@ -203,6 +203,7 @@ awk [选项参数] -f scriptfile var=value file(s)
   * 查看当前系统的端口使用：netstat -an
 
 * **查看磁盘信息命令：**
+
   * df -hl：查看磁盘剩余空间
   * df -h：查看每个根路径的分区大小
   * du -sh [目录名]：返回该目录的大小

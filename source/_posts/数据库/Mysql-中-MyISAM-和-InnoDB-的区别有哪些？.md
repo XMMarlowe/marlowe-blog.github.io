@@ -1,5 +1,5 @@
 ---
-title: Mysql 中 MyISAM 和 InnoDB 的区别有哪些？
+title: MySQL 中 MyISAM 和 InnoDB 的区别有哪些？
 author: Marlowe
 tags:
   - InnoDB
@@ -25,8 +25,6 @@ date: 2021-01-11 09:42:45
 2. 如果表中绝大多数都只是读查询，可以考虑 MyISAM，如果既有读写也挺频繁，请使用InnoDB。
 3. 系统奔溃后，MyISAM恢复起来更困难，能否接受，不能接受就选 InnoDB； 
 4. MySQL5.5版本开始Innodb已经成为Mysql的默认引擎(之前是MyISAM)，说明其优势是有目共睹的。如果你不知道用什么存储引擎，那就用InnoDB，至少不会差。
-
-
 
 
 ### 参考
