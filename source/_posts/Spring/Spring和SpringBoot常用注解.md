@@ -1,9 +1,10 @@
 ---
 title: Spring和SpringBoot常用注解
 author: Marlowe
-date: 2021-05-28 13:34:35
 tags: 注解
 categories: Spring
+abbrlink: 45369
+date: 2021-05-28 13:34:35
 ---
 总结Spring和SpringBoot常用注解...
 <!--more-->

@@ -1,9 +1,10 @@
 ---
 title: Mybatis传参的几种方式
 author: Marlowe
-date: 2021-06-01 19:35:26
 tags: Mybatis
 categories: Spring
+abbrlink: 10483
+date: 2021-06-01 19:35:26
 ---
 
 <!--more-->
