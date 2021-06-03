@@ -1,11 +1,12 @@
 ---
 title: 项目实践之MySQL创建存储过程
 author: Marlowe
-date: 2021-06-03 14:59:42
-tags: 
+tags:
   - MySQL
   - 存储过程
 categories: 个人项目
+abbrlink: 48370
+date: 2021-06-03 14:59:42
 ---
 
 
