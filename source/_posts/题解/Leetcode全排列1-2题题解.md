@@ -2,7 +2,7 @@
 title: Leetcode全排列1-2题题解
 author: Marlowe
 tags: Leetcode
-categories: LeetCode题解
+categories: 题解
 abbrlink: 28414
 date: 2020-10-12 21:49:35
 ---

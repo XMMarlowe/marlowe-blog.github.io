@@ -1,9 +1,10 @@
 ---
 title: MySQL索引详解
 author: Marlowe
-date: 2021-06-02 22:41:36
 tags: 索引
 categories: 数据库
+abbrlink: 41754
+date: 2021-06-02 22:41:36
 ---
 
 <!--more-->
@@ -252,3 +253,9 @@ ALTER TABLE `table_name` ADD FULLTEXT ( `column`)
 ```sql
 ALTER TABLE `table_name` ADD INDEX index_name ( `column1`, `column2`, `column3` )
 ```
+
+### 参考
+
+[MySQL数据库索引总结](https://snailclimb.gitee.io/javaguide/#/docs/database/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95)
+
+

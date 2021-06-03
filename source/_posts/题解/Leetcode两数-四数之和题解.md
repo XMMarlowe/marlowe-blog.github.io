@@ -3,7 +3,7 @@ title: Leetcode两数-四数之和题解
 author: Marlowe
 tags:
   - Leetcode
-categories: LeetCode题解
+categories: 题解
 abbrlink: 4115
 date: 2020-10-12 21:35:23
 ---
