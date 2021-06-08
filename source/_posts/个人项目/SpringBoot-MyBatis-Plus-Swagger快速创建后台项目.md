@@ -1,12 +1,13 @@
 ---
 title: SpringBoot + MyBatis-Plus + Swagger快速创建后台项目
 author: Marlowe
-date: 2021-06-08 20:07:21
-tags: 
+tags:
   - SpringBoot
   - MyBatis-Plus
   - Swagger
 categories: 个人项目
+abbrlink: 14903
+date: 2021-06-08 20:07:21
 ---
 
 本文主要用于记录综合课程设计Ⅲ中的学习的后台相关插件使用...
@@ -700,7 +701,7 @@ public class EmployeeController {
 
 分别测试所有接口即可。
 
-### 个人博客
+### 参考资料
 
 [Marlowe's的个人博客](https://xmmarlowe.github.io/)
 
