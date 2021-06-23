@@ -1,9 +1,10 @@
 ---
 title: RBAC权限详解
 author: Marlowe
-date: 2021-06-23 20:10:49
 tags: RBAC
 categories: 个人项目
+abbrlink: 53215
+date: 2021-06-23 20:10:49
 ---
 
 <!--more-->
