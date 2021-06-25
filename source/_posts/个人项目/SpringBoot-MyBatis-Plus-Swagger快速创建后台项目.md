@@ -80,7 +80,7 @@ spring:
     active: prod
   datasource:
     druid:
-      url: jdbc:mysql://lcoalhost:3306/music?serverTimezone=Asia/Shanghai
+      url: jdbc:mysql://localhost:3306/weixin?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
       username: root
       password: root
       initial-size: 1
@@ -99,7 +99,7 @@ server:
     context-path: /
 spring:
   datasource:
-    url: jdbc:mysql://42.51.194.59:3307/music?serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/weixin?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -124,7 +124,7 @@ server:
     context-path: /
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/music?serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/weixin?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -143,11 +143,41 @@ mybatis-plus:
 ##### 3. 引入相关依赖
 
 ```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <optional>true</optional>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+</dependency>
+
 <!--MySQL-->
 <dependency>
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
     <version>8.0.25</version>
+</dependency>
+
+<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>druid</artifactId>
+    <version>1.2.6</version>
+</dependency>
+
+<!--fastjson-->
+<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>fastjson</artifactId>
+    <version>1.2.62</version>
 </dependency>
 
 <!--swagger在线文档-->
@@ -167,6 +197,12 @@ mybatis-plus:
     <version>portable-1.1.5</version>
 </dependency>
 
+<!--hutool-->
+<dependency>
+    <groupId>cn.hutool</groupId>
+    <artifactId>hutool-all</artifactId>
+    <version>5.1.0</version>
+</dependency>
 <!--mybatis-plus-->
 <dependency>
     <groupId>com.baomidou</groupId>
@@ -179,6 +215,7 @@ mybatis-plus:
     <artifactId>mybatis-plus-generator</artifactId>
     <version>3.4.1</version>
 </dependency>
+
 
 <!--MyBatis 分页插件: MyBatis PageHelper-->
 <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
