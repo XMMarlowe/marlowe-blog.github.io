@@ -3,12 +3,13 @@ title: >-
   SpringBoot整合Shiro报错:The dependencies of some of the beans in the application
   context form a cycle
 author: Marlowe
-date: 2021-06-30 15:51:03
-tags: 
+tags:
   - SpringBoot
   - Shiro
   - 问题教程
 categories: 个人项目
+abbrlink: 48542
+date: 2021-06-30 15:51:03
 ---
 
 SpringBoot整合Shiro遇到循环依赖问题...
