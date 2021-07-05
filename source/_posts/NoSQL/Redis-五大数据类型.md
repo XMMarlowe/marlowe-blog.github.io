@@ -28,11 +28,46 @@ set,get,decr,incr,mget 等。
 
 String是最常用的一种数据类型，普通的key/ value 存储都可以归为此类.即可以完全实现目前 Memcached 的功能，并且效率更高。还可以享受Redis的定时持久化，操作日志及 Replication等功能。除了提供与 Memcached 一样的get、set、incr、decr 等操作外，Redis还提供了下面一些操作：
 
-* 获取字符串长度
-* 往字符串append内容
-* 设置和获取字符串的某一段内容
-* 设置及获取字符串的某一位（bit）
-* 批量设置一系列字符串的内容
+* set: 设置指定 key 的值
+* get: 获取指定 key 的值。
+* getrange: 获取值的部分
+* getset: 将给定 key 的值设为 value ，并返回 key 的旧值(old value)。
+* getbit: 对 key 所储存的字符串值，获取指定偏移量上的位(bit)。
+* setbit: 对 key 所储存的字符串值，设置或清除指定偏移量上的位(bit)。
+* mget: 获取多个key
+* setnx: key不存在时才设置value
+* setex: 将值value关联到key，并将key的过期时间设为seconds
+* psetex: 将值value关联到key，并将key的过期时间设为毫秒
+* setrange: 用 value 参数覆写给定 key 所储存的字符串值，从偏移量 offset 开始。
+* strlen: 返回 key 所储存的字符串值的长度。
+* mset: 设置多对key/value的值
+* msetnx: 同时设置一个或多个 key-value 对，当且仅当所有给定 key 都不存在。
+* incr: 值增加1
+* incrby: 将 key 所储存的值加上给定的增量值（increment） 。
+* decr: 值减1
+* decrby: key 所储存的值减去给定的减量值（decrement） 。
+* append: 添加到尾部
+
+
+---
+
+* del: 该命令用于在 key 存在时删除 key。
+* dump: 序列化给定 key ，并返回被序列化的值。
+* exists: 检查给定 key 是否存在。
+* expire: 为给定 key 设置过期时间，以秒计。
+* expireat: EXPIREAT 的作用和 EXPIRE 类似，都用于为 key 设置过期时间。 不同在于 EXPIREAT 命令接受的时间参数是 UNIX 时间戳(unix timestamp)。
+* pexpire: 设置 key 的过期时间以毫秒计。
+* pexpireat: 设置 key 过期时间的时间戳(unix timestamp) 以毫秒计
+* keys: 查找所有符合给定模式( pattern)的 key 。
+* move: 将当前数据库的 key 移动到给定的数据库 db 当中。
+* persist: 移除 key 的过期时间，key 将持久保持。
+* pttl: 以毫秒为单位返回 key 的剩余的过期时间。
+* ttl: 以秒为单位，返回给定 key 的剩余生存时间(TTL, time to live)。
+* randomkey: 从当前数据库中随机返回一个 key 。
+* rename: 修改 key 的名称
+* renamenx: 仅当 newkey 不存在时，将 key 改名为 newkey 。
+* type: 查询数据类型
+
 
 #### 实现方式
 
@@ -183,6 +218,24 @@ String类似的使用场景：value除了是字符串还可以是数字
 #### 常用命令
 
 lpush,rpush,lpop,rpop,lrange等。
+
+* blpop: 移出并获取列表的第一个元素， 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。
+* brpop: 移出并获取列表的最后一个元素， 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。
+* brpoplpush: 从列表中弹出一个值，将弹出的元素插入到另外一个列表中并返回它； 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。
+* lindex: 通过索引获取列表中的元素
+* linsert: 在列表的元素前或者后插入元素
+* llen: 获取列表长度
+* lpop: 移出并获取列表的第一个元素
+* lpush: 将一个或多个值插入到列表头部
+* lpushx: 将一个值插入到已存在的列表头部
+* lrange: 获取列表指定范围内的元素
+* lrem: 移除列表元素
+* lset: 通过索引设置列表元素的值
+* ltrim: 对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。
+* rpop: 移除列表的最后一个元素，返回值为移除的元素。
+* rpoplpush: 移除列表的最后一个元素，并将该元素添加到另一个列表并返回
+* rpush: 在列表中添加一个或多个值
+* rpushx: 为已存在的列表添加值
 
 #### 应用场景
 
@@ -375,6 +428,25 @@ linsert # 将某个具体的value插入到列表中某个元素的前面或者�
 
 sadd,spop,smembers,sunion 等。
 
+* sadd: 
+* scard: 
+* sdiff: 
+* sdiffstore: 
+* sinsert: 
+* sinsertstore: 
+* sismember: 
+* smembers: 
+* smove: 
+* spop: 
+* srandomember: 
+* srem: 
+* sunion: 
+* sunionstore: 
+* sscan: 
+* sunionstore: 
+* sscan: 
+
+
 #### 应用场景
 
 Redis set 对外提供的功能与 list 类似是一个列表的功能，特殊之处在于 set 是可以自动排重的，当你需要存储一个列表数据，又不希望出现重复数据时，set 是一个很好的选择，并且 set 提供了判断某个成员是否在一个 set 集合内的重要接口，这个也是 list 所不能提供的。
@@ -500,6 +572,20 @@ Map 集合，key-map!
 #### 常用命令
 
 hget,hset,hgetall ,hincrby,hlen等。
+
+* hdel: 删除一个或多个哈希表字段
+* hexists: 查看哈希表 key 中，指定的字段是否存在。
+* hset: 将哈希表 key 中的字段 field 的值设为 value 。
+* hsetnx: 只有在字段 field 不存在时，设置哈希表字段的值。
+* hget: 获取存储在哈希表中指定字段的值。
+* hgetall: 获取在哈希表中指定 key 的所有字段和值
+* hincrby: 为哈希表 key 中的指定字段的整数值加上增量 increment 。
+* hkeys: 获取所有哈希表中的字段
+* hlen: 获取哈希表中字段的数量
+* hmget: 获取所有给定字段的值
+* hmset: 同时将多个 field-value (域-值)对设置到哈希表 key 中。
+* hvals: 获取哈希表中所有值。
+* hscan: 迭代哈希表中的键值对。
 
 #### 应用场景
 

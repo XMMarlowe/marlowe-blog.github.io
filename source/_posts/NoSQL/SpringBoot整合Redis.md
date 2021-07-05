@@ -13,7 +13,8 @@ date: 2020-12-23 21:59:54
 说明：SpringBoot2.x之后，原来使用jedis被替换为了lettuce
 jedis：采用的直连，多个线程操作的话，是不安全的，如果想要避免不安全，使用jedis pool连接池！ 更像BIO模式
 lettuce：采用netty，示例可以在多个线程中共享，不存在线程不安全的情况！可以减少线程数据了，更像NIO模式
-原码分析：
+
+### 原码分析：
 ```java
 @Bean
 @ConditionalOnMissingBean(name = "redisTemplate")// 我们可以自定义一个redisTemplate来替换这个默认的！
@@ -36,7 +37,7 @@ public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory redisConne
 }
 ```
 
-整合测试
+### 整合测试
 
 1. 导入依赖
 ```xml

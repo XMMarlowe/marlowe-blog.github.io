@@ -13,10 +13,6 @@
   description: # 分组描述
   items:
 
-     - title: chikaze # 名称
-       avatar: https://chikaze73.github.io/img/avatar.png
-       url: https://chikaze73.github.io/
-
      - title: GodLanBo # 名称
        avatar: https://godlanbo.com/image/avatar.jpeg
        url: https://godlanbo.com/home
