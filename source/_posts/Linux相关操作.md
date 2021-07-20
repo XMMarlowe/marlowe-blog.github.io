@@ -1,9 +1,10 @@
 ---
 title: Linux相关操作
 author: Marlowe
-date: 2021-07-20 21:27:24
 tags: Linux
 categories: 操作系统
+abbrlink: 57149
+date: 2021-07-20 21:27:24
 ---
 
 ### 一、Linux 基本操作
