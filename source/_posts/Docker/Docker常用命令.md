@@ -2,7 +2,7 @@
 title: Docker常用命令
 author: Marlowe
 tags: Docker
-categories: 学习笔记
+categories: Docker
 abbrlink: 7569
 date: 2020-11-11 16:16:31
 ---

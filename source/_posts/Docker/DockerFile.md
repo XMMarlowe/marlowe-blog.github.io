@@ -2,7 +2,7 @@
 title: DockerFile
 author: Marlowe
 tags: Docker
-categories: 学习笔记
+categories: Docker
 abbrlink: 35119
 date: 2020-11-17 01:06:17
 ---

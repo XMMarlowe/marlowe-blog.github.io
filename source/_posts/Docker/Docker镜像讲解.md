@@ -2,7 +2,7 @@
 title: Docker镜像讲解
 author: Marlowe
 tags: Docker
-categories: 学习笔记
+categories: Docker
 abbrlink: 23488
 date: 2020-11-16 19:46:45
 ---
