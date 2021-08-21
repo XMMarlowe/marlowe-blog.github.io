@@ -1,12 +1,13 @@
 ---
 title: Spring通过set注入解决循环依赖
 author: Marlowe
-date: 2021-08-21 17:24:04
 tags:
   - Spring
   - 循环依赖
   - 注入
 categories: Spring
+abbrlink: 44664
+date: 2021-08-21 17:24:04
 ---
 循环依赖是指两个bean相互依赖,如下面的A和B: A依赖于B,B又依赖于A.如果未加处理这会导致无限递归程序崩溃,然而在实例项目中这种情况循环依赖的情况并不少见.为此Spring做了一些努力,**解决了setter注入方式的循环依赖,对于构造器注入方式的循环只能检测并提前崩溃.**
 <!--more-->
