@@ -24,8 +24,6 @@ Strings 数据结构是简单的key-value类型，value其实不仅是String，�
 
 set,get,decr,incr,mget 等。
 
-#### 应用场景
-
 String是最常用的一种数据类型，普通的key/ value 存储都可以归为此类.即可以完全实现目前 Memcached 的功能，并且效率更高。还可以享受Redis的定时持久化，操作日志及 Replication等功能。除了提供与 Memcached 一样的get、set、incr、decr 等操作外，Redis还提供了下面一些操作：
 
 * set: 设置指定 key 的值
@@ -67,6 +65,11 @@ String是最常用的一种数据类型，普通的key/ value 存储都可以归
 * rename: 修改 key 的名称
 * renamenx: 仅当 newkey 不存在时，将 key 改名为 newkey 。
 * type: 查询数据类型
+
+#### 应用场景
+
+* 商品编号、订单号采用INCR命令生成
+* 是否喜欢的文章
 
 
 #### 实现方式
@@ -240,6 +243,14 @@ lpush,rpush,lpop,rpop,lrange等。
 #### 应用场景
 
 Redis list 的应用场景非常多，也是 Redis 最重要的数据结构之一，比如 twitter 的关注列表，粉丝列表等都可以用 Redis 的 list 结构来实现，还可以做消息队，列息队列不仅被用于系统内部组件之间的通信，同时也被用于系统跟其它服务之间的交互。消息队列的使用可以增加系统的可扩展性、灵活性和用户体验。非基于消息队列的系统，其运行速度取决于系统中最慢的组件的速度（注：木桶效应）。而基于消息队列可以将系统中各组件解除耦合，这样系统就不再受最慢组件的束缚，各组件可以异步运行从而得以更快的速度完成各自的工作。此外，当服务器处在高并发操作的时候，比如频繁地写入日志文件。可以利用消息队列实现异步处理。从而实现高性能的并发操作。
+
+**微信文章订阅公众号**
+
+* 大V作者李永乐老师和ICSDN发布了文章分别是11和22
+* 阳哥关注了他们两个，只要他们发布了新文章，就会安装进我的List
+  * lpush likearticle:阳哥id1122
+* 查看阳哥自己的号订阅的全部文章，类似分页，下面0~10就是一次显示10条
+  * lrange likearticle:阳哥id 0 10
 
 #### 实现方式
 
@@ -451,6 +462,43 @@ sadd,spop,smembers,sunion 等。
 
 Redis set 对外提供的功能与 list 类似是一个列表的功能，特殊之处在于 set 是可以自动排重的，当你需要存储一个列表数据，又不希望出现重复数据时，set 是一个很好的选择，并且 set 提供了判断某个成员是否在一个 set 集合内的重要接口，这个也是 list 所不能提供的。
 
+**微信抽奖小程序**
+* 用户ID，立即参与按钮
+  * SADD key 用户ID
+* 显示已经有多少人参与了、上图23208人参加
+  * SCARD key
+* 抽奖(从set中任意选取N个中奖人)
+  * SRANDMEMBER key 2（随机抽奖2个人，元素不删除）
+  * SPOP key 3（随机抽奖3个人，元素会删除）
+
+**微信朋友圈点赞**
+
+* 新增点赞
+  * sadd pub:msglD 点赞用户ID1 点赞用户ID2
+* 取消点赞
+  * srem pub:msglD 点赞用户ID
+* 展现所有点赞过的用户
+  * SMEMBERS pub:msglD
+* 点赞用户数统计，就是常见的点赞红色数字
+  * scard pub:msgID
+* 判断某个朋友是否对楼主点赞过
+  * SISMEMBER pub:msglD用户ID
+
+**微博好友关注社交关系**
+* 共同关注：我去到局座张召忠的微博，马上获得我和局座共同关注的人
+  * sadd s1 1 2 3 4 5
+  * sadd s2 3 4 5 6 7
+  * SINTER s1 s2
+* 我关注的人也关注他(大家爱好相同)
+
+**QQ内推可能认识的人**
+
+* sadd s1 1 2 3 4 5
+* sadd s2 3 4 5 6 7
+* SINTER s1 s2
+* SDIFF s1 s2
+* SDIFF s2 s1
+
 #### 实现方式
 
 set 的内部实现是一个 value 永远为 null 的 HashMap，实际就是通过计算 hash 的方式来快速排重的，这也是 set 能提供判断一个成员是否在集合内的原因。
@@ -589,6 +637,14 @@ hget,hset,hgetall ,hincrby,hlen等。
 
 #### 应用场景
 
+**购物车早期，当前小中厂可用**
+
+* 新增商品 hset shopcar:uid1024 334488 1
+* 新增商品 hset shopcar:uid1024 334477 1
+* 增加商品数量 hincrby shopcar:uid1024 334477 1
+* 商品总数 hlen shopcar:uid1024
+* 全部选择 hgetall shopcar:uid1024
+
 在Memcached中，我们经常将一些结构化的信息打包成HashMap，在客户端序列化后存储为一个字符串的值，比如用户的昵称、年龄、性别、积分等，这时候在需要修改其中某一项时，通常需要将所有值取出反序列化后，修改某一项的值，再序列化存储回去。这样不仅增大了开销，也不适用于一些可能并发操作的场合（比如两个并发的操作都需要修改积分）。而Redis的Hash结构可以使你像在数据库中Update一个属性一样只修改某一项属性值。
 
 我们简单举个实例来描述下Hash的应用场景，比如我们要存储一个用户信息对象数据，包含以下信息：用户ID为查找的key，存储的value用户对象包含姓名，年龄，生日等信息，如果用普通的key/value结构来存储，主要有以下2种存储方式：
@@ -682,10 +738,25 @@ hash变更的数据 user name age，尤其是用户信息之类的，经常变�
 
 zadd,zrange,zrem,zcard等。
 
-
 #### 使用场景
 
 Redis sorted set 的使用场景与 set 类似，区别是 set 不是自动有序的，而 sorted set 可以通过用户额外提供一个优先级（score）的参数来为成员排序，并且是插入有序的，即自动排序。当你需要一个有序的并且不重复的集合列表，那么可以选择 sorted set 数据结构，比如你需要存储3个有关联事物时候,常见的用户,消息,消息等级；还可以利用zIncrBy，zRevRange，zAdd,zRevRank,zScore等接口做排行榜。
+
+**根据商品销售对商品进行排序显示**
+
+* 定义商品销售排行榜（sorted set集合），key为goods:sellsort，分数为商品销售数量。
+  * 商品编号1001的销量是9，商品编号1002的销量是15 - zadd goods:sellsort 9 1001 15 1002
+  * 有一个客户又买了2件商品1001，商品编号1001销量加2 - zincrby goods:sellsort 2 1001
+  * 求商品销量前10名 - ZRANGE goods:sellsort 0 10 withscores
+
+**抖音热搜**
+
+* 点击视频
+  * ZINCRBY hotvcr:20200919 1 八佰
+  * ZINCRBY hotvcr:20200919 15 八佰 2 花木兰
+
+* 展示当日排行前10条
+  * ZREVRANGE hotvcr:20200919 0 9 withscores
 
 #### 实现方式
 

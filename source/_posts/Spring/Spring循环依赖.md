@@ -144,4 +144,5 @@ protected void addSingletonFactory(String beanName, ObjectFactory<?> singletonFa
 
 [Spring-bean的循环依赖以及解决方式](https://blog.csdn.net/u010853261/article/details/77940767)
 
-好文推荐：[Spring 是如何解决循环依赖的？](https://www.zhihu.com/question/438247718/answer/1730527725)
+好文推荐：
+[Spring 是如何解决循环依赖的？](https://www.zhihu.com/question/438247718/answer/1730527725)

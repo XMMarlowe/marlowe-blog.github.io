@@ -1,9 +1,10 @@
 ---
 title: JVM调优(二)
 author: Marlowe
-date: 2021-08-21 15:53:00
 tags: JVM
 categories: Java
+abbrlink: 6109
+date: 2021-08-21 15:53:00
 ---
 
 JVM调优相关步骤
@@ -221,6 +222,7 @@ XX:MaxDirectMemorySize
 ```
 
 ### 7、JVM调优实例
+
 以下是整理自网络的一些JVM调优实例：
 
 #### 7.1、网站流量浏览量暴增后，网站反应页面响很慢
@@ -345,3 +347,7 @@ jmap -dump:live,format=b,file=/home/myheapdump.hprof PID  dump堆内存信息到
 #### 7.8、鉴权系统频繁长时间 Full GC
 
 系统对外提供各种账号鉴权服务，使用时发现系统经常服务不可用，通过 Zabbix 的监控平台监控发现系统频繁发生长时间 Full GC，且触发时老年代的堆内存通常并没有占满，发现原来是业务代码中调用了 System.gc()。
+
+### 参考
+
+[【JVM进阶之路】十：JVM调优总结](https://zhuanlan.zhihu.com/p/363961261)
