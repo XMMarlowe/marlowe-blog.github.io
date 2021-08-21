@@ -2,7 +2,7 @@
 title: ES写数据以及文档读写原理
 author: Marlowe
 tags: ES
-categories: ElasticSearch
+categories: 中间件
 abbrlink: 962
 date: 2021-05-19 22:34:02
 ---

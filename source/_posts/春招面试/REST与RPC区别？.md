@@ -2,7 +2,7 @@
 title: REST与RPC区别？
 author: Marlowe
 tags:
-  - Resuful
+  - RESTful
   - RPC
 categories: 春招面试
 abbrlink: 60178

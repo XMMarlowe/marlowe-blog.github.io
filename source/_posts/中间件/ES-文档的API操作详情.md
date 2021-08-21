@@ -5,7 +5,7 @@ tags:
   - ES
   - SpringBoot
   - API
-categories: ElasticSearch
+categories: 中间件
 abbrlink: 64325
 date: 2020-12-08 19:16:02
 ---

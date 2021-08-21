@@ -1,10 +1,10 @@
 ---
-title: Rest风格操作
+title: ES之Rest风格操作
 author: Marlowe
 tags:
-  - Resuful
+  - RESTful
   - ES
-categories: ElasticSearch
+categories: 中间件
 abbrlink: 26163
 date: 2020-12-08 12:24:51
 ---
