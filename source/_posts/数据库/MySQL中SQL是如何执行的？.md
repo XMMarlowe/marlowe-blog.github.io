@@ -24,11 +24,14 @@ date: 2021-01-16 21:49:12
 * **优化器**： 按照 MySQL 认为最优的方案去执行。
 * **执行器**: 执行语句，然后从存储引擎返回数据。
 
-![sql执行过程](https://user-gold-cdn.xitu.io/2019/3/23/169a8bc60a083849?w=950&h=1062&f=jpeg&s=38189)
+![20210825230820](https://marlowe.oss-cn-beijing.aliyuncs.com/img/20210825230820.png)
+
+![20210825230941](https://marlowe.oss-cn-beijing.aliyuncs.com/img/20210825230941.png)
 
 简单来说 MySQL 主要分为 Server 层和存储引擎层：
 
 * **Server** 层：主要包括连接器、查询缓存、分析器、优化器、执行器等，所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图，函数等，还有一个通用的日志模块 binglog 日志模块。
+
 * **存储引擎**： 主要负责数据的存储和读取，采用可以替换的插件式架构，支持 InnoDB、MyISAM、Memory 等多个存储引擎，其中 InnoDB 引擎有自有的日志模块 redolog 模块。现在最常用的存储引擎是 InnoDB，它从 MySQL 5.5.5 版本开始就被当做默认存储引擎了。
 
 #### Server 层基本组件介绍

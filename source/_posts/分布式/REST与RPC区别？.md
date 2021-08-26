@@ -4,7 +4,7 @@ author: Marlowe
 tags:
   - RESTful
   - RPC
-categories: 春招面试
+categories: 分布式
 abbrlink: 60178
 date: 2021-05-14 17:22:42
 ---

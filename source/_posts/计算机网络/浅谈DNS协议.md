@@ -22,11 +22,15 @@ DNS 可以使用 UDP 或者 TCP 进行传输，使用的端口号都为 53。大
 
 DNS解析是一个递归查询的过程。
 
-1. 浏览器查找域名的IP地址(DNS查找过程：浏览器缓存、路由器缓存、DNS缓存)
-2. 浏览器向web服务器发送一个HTTP请求(cookies会随着请求发送给服务器)
-3. 服务器处理请求(请求 处理请求 & 它的参数、cookie、生成一个HTML相应)
-4. 服务器发回一个HTML响应
-5. 浏览器开始显示HTML
+1. 浏览器访问 www.baidu.com
+2. 查找浏览器缓存
+3. 查找dns解析器缓存host
+4. 查找本地dns服务器缓存
+5. 查找根dns服务器缓存，找到了返回对应后缀的dns服务器地址ip（比如com DNS服务器）
+6. 查找com dns服务器，返回baidu.com的dns服务器ip
+7. 查找baidu.com dns服务器ip
+8. 得到baidu.com服务器ip，写入缓存。
+9. 浏览器拿到ip进行访问。
 
 **查找www.google.com的IP地址过程**
 

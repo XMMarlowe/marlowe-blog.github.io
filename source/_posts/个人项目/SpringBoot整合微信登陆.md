@@ -5,7 +5,7 @@ tags:
   - SpringBoot
   - WeChat
   - Login
-categories: Spring
+categories: 个人项目
 abbrlink: 5167
 date: 2021-08-05 08:27:34
 ---

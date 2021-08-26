@@ -6,7 +6,7 @@ date: 2021-03-15 14:21:31
 tags: 
   - 动态代理
   - JDK
-categories: 春招面试
+categories: 设计模式
 ---
 
 <!--more-->

@@ -4,7 +4,7 @@ author: Marlowe
 tags:
   - BTree
   - B+Tree
-categories: 数据结构
+categories: 数据库
 abbrlink: 4250
 date: 2021-03-23 00:32:18
 ---
