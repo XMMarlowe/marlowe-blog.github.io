@@ -4,7 +4,7 @@ author: Marlowe
 tags:
   - Java基础
   - 面经
-categories: Java基础
+categories: Java
 abbrlink: 4428
 date: 2020-12-07 08:20:29
 ---

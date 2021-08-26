@@ -9,7 +9,7 @@ git pull HexoBlog master
 git push HexoBlog master
 
 echo 'start clean'
-call hexo c
+call hexo clean
 
 echo 'start generate'
 call hexo g

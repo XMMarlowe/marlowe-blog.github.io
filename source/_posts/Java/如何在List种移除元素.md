@@ -2,7 +2,7 @@
 title: 如何在List种移除元素
 author: Marlowe
 tags: List
-categories: java
+categories: Java
 abbrlink: 17758
 date: 2021-05-08 22:01:59
 ---

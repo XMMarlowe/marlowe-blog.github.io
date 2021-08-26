@@ -3,8 +3,8 @@ title: spring循环依赖
 author: Marlowe
 abbrlink: 22450
 date: 2021-05-14 16:09:52
-tags:
-categories:
+tags: Spring
+categories: Spring
 ---
 
 <!--more-->
