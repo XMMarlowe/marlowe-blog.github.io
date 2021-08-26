@@ -9,6 +9,10 @@ abbrlink: 31186
 date: 2021-05-16 21:02:41
 ---
 
+本文转载于[Spring IOC 容器源码分析](https://javadoop.com/post/spring-ioc)
+
+<!--more-->
+
 Spring 最重要的概念是 IOC 和 AOP，本篇文章其实就是要带领大家来分析下 Spring 的 IOC 容器。既然大家平时都要用到 Spring，怎么可以不好好了解 Spring 呢？阅读本文并不能让你成为 Spring 专家，不过一定有助于大家理解 Spring 的很多概念，帮助大家排查应用中和 Spring 相关的一些问题。
 
 本文采用的源码版本是 4.3.11.RELEASE，算是 5.0.x 前比较新的版本了。为了降低难度，本文所说的所有的内容都是基于 xml 的配置的方式，实际使用已经很少人这么做了，至少不是纯 xml 配置，不过从理解源码的角度来看用这种方式来说无疑是最合适的。
@@ -16,8 +20,6 @@ Spring 最重要的概念是 IOC 和 AOP，本篇文章其实就是要带领大�
 阅读建议：读者至少需要知道怎么配置 Spring，了解 Spring 中的各种概念，少部分内容我还假设读者使用过 SpringMVC。本文要说的 IOC 总体来说有两处地方最重要，一个是创建 Bean 容器，一个是初始化 Bean，如果读者觉得一次性看完本文压力有点大，那么可以按这个思路分两次消化。读者不一定对 Spring 容器的源码感兴趣，也许附录部分介绍的知识对读者有些许作用。
 
 希望通过本文可以让读者不惧怕阅读 Spring 源码，也希望大家能反馈表述错误或不合理的地方。
-
-<!--more-->
 
 ## 引言
 
@@ -2766,6 +2768,3 @@ public interface BeanPostProcessor {
 
 （全文完）
 
-### 参考
-
-本文转载于[Spring IOC 容器源码分析](https://javadoop.com/post/spring-ioc)

@@ -2,9 +2,8 @@
 D:
 cd D:\PersonalFile\HexoBlog
 echo 'start git sync'
-git add .
+git status
 git add -A
-git add -u
 git commit -m "update..."
 git pull HexoBlog master
 git push HexoBlog master
