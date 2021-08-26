@@ -3,6 +3,7 @@ title: MySQL之主从复制与读写分离
 author: Marlowe
 tags: MySQL
 categories: 数据库
+abbrlink: 60669
 date: 2021-06-02 22:41:36
 ---
 

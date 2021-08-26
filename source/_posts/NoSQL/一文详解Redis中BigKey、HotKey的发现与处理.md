@@ -3,6 +3,7 @@ title: 一文详解Redis中BigKey、HotKey的发现与处理
 author: Marlowe
 tags: Redis
 categories: NoSQL
+abbrlink: 20763
 date: 2021-08-26 21:37:24
 ---
 
