@@ -5,6 +5,7 @@ tags:
   - Spring
   - Bean
 categories: Spring
+abbrlink: 36477
 date: 2021-05-16 11:09:23
 ---
 转载于[淘宝一面：“说一下 Spring Boot 自动装配原理呗？”](https://www.cnblogs.com/javaguide/p/springboot-auto-config.html)
