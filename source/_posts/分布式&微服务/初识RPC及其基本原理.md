@@ -2,7 +2,7 @@
 title: 初识RPC及其基本原理
 author: Marlowe
 tags: RPC
-categories: 分布式
+categories: 分布式&微服务
 abbrlink: 6389
 date: 2021-08-23 22:31:43
 ---

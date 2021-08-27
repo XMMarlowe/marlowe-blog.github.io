@@ -4,7 +4,7 @@ author: Marlowe
 tags:
   - 分布式
   - ID
-categories: 分布式
+categories: 分布式&微服务
 abbrlink: 60037
 date: 2021-08-05 23:23:18
 ---

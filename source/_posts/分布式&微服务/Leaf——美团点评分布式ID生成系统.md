@@ -4,7 +4,7 @@ author: Marlowe
 tags:
   - 美团
   - ID
-categories: 分布式
+categories: 分布式&微服务
 abbrlink: 53061
 date: 2021-08-21 11:26:49
 ---
