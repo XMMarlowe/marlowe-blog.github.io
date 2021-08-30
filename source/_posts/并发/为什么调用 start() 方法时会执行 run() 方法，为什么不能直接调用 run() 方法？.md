@@ -3,6 +3,7 @@ title: 为什么调用 start() 方法时会执行 run() 方法，为什么不能
 author: Marlowe
 tags: 线程
 categories: 并发
+abbrlink: 47798
 date: 2021-03-09 17:12:15
 ---
 <!--more-->

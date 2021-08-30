@@ -10,12 +10,12 @@ date: 2021-05-08 21:42:11
 <!--more-->
 
 
-### 使用 new 关键字创建对象
+### 1、使用 new 关键字创建对象
 
 这是常用的创建对象的方法，语法格式如下：
 类名 对象名=new 类名()；
 
-### 调用 java.lang.Class 或者 java.lang.reflect.Constuctor 类的 newlnstance() 实例方法
+### 2、调用 java.lang.Class 或者 java.lang.reflect.Constuctor 类的 newlnstance() 实例方法
 
 在 Java 中，可以使用 java.lang.Class 或者 java.lang.reflect.Constuctor 类的 newlnstance() 实例方法来创建对象，代码格式如下：
 java.lang.Class Class 类对象名称=java.lang.Class.forName(要实例化的类全称);
@@ -23,12 +23,12 @@ java.lang.Class Class 类对象名称=java.lang.Class.forName(要实例化的类
 
 调用 java.lang.Class 类中的 forName() 方法时，需要将要实例化的类的全称（比如 com.mxl.package.Student）作为参数传递过去，然后再调用 java.lang.Class 类对象的 newInstance() 方法创建对象。
 
-### 调用对象的 clone() 方法
+### 3、调用对象的 clone() 方法
 
 该方法不常用，使用该方法创建对象时，要实例化的类必须继承 java.lang.Cloneable 接口。 调用对象的 clone() 方法创建对象的语法格式如下：
 类名对象名=(类名)已创建好的类对象名.clone();
 
-### 调用 java.io.ObjectlnputStream 对象的 readObject() 方法
+### 4、调用 java.io.ObjectlnputStream 对象的 readObject() 方法
 
 
 ### 示例代码

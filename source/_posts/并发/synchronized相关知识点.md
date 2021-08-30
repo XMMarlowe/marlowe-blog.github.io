@@ -116,6 +116,12 @@ public class SynchronizedDemo {
 
 * 在执行 monitorexit 指令后，将锁计数器设为 0，表明锁被释放。如果获取对象锁失败，那当前线程就要阻塞等待，直到锁被另外一个线程释放为止。
 
+**问题：**
+
+**为什么有两个monitorexit？**
+
+为了保证抛异常的情况下也能释放锁，所以javac为同步代码块添加了一个隐式的try-finally，在finally中会调用monitorexit命令释放锁。
+
 ##### 2.1.2 synchronized 修饰方法的的情况
 ```java
 public class SynchronizedDemo2 {

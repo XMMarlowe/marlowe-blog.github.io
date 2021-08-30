@@ -13,7 +13,7 @@ date: 2021-06-01 17:05:09
 
 ### Spring Boot 特性一：更快速的构建能力
 
-**Spring 和 Spring Boot 有什么区别？Spring Boot 的优点有哪些？**
+#### Spring 和 Spring Boot 有什么区别？Spring Boot 的优点有哪些？
 
 作为 Java 开发人员对 Spring 框架都很熟悉，Spring 为 Java 程序提供了全面的基础架构支持，包含了很多非常实用的功能，如 Spring JDBC、Spring AOP、Spring ORM、Spring Test 等，这些模块的出现，大大的缩短了应用程序的开发时间，同时提高了应用开发的效率。
 

@@ -109,7 +109,7 @@ Java HotSpot 虚拟机中，每个对象都有对象头（包括 class 指针和
 * **等待可中断：** 是指当持有锁的线程长期不释放锁的时候，正在等待的线程可以选择放弃等待，改为处理其他事情 可中断特性对处理执行时间非常长的同步块很有帮助
 * **公平锁：** 是指多个线程在等待同一个锁时，必须按照申请锁的时间顺序来依次获得锁；而非公平锁则不保证这一点，在锁被释放时，任何－个等待锁的线程都有机会获得锁 synchronized 中的锁是非公平的， ReentrantLock 默认情况下也是非公平
 的，但可以通过带布尔值的构造函数要求使用公平锁 不过一旦使用了公平锁，将会导致 ReentrantLock 的性能急剧下降，会明显 吞吐量
-* **锁绑定多个条件：** 是指一个 ReentrantLock 象可以同时绑定多个 Condition 对象synchronized 中，锁对象的 wait() 跟的 notify()或者 notifyAll ()方法配合可以实现一个隐含的条件，如果要和多于一个的条件关联的时候，就不得不额外添加一个锁；而 ReentrantLock 则无须这样做，多次调用 newCondition（）方法即可
+* **锁绑定多个条件：** 是指一个 ReentrantLock 象可以同时绑定多个 Condition 对象synchronized 中，锁对象的 wait() 跟的 notify()或者 notifyAll ()方法配合可以实现一个隐含的条件，如果要和多于一个的条件关联的时候，就不得不额外添加一个锁；而 ReentrantLock 则无须这样做，多次调用 newCondition（）方法即可。
 
 
 ### Synchronized 和 ReentrantLock 的对比

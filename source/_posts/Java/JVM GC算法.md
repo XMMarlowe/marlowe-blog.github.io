@@ -1,5 +1,5 @@
 ---
-title: JVM垃圾回收算法
+title: JVM GC算法
 author: Marlowe
 tags:
   - JVM

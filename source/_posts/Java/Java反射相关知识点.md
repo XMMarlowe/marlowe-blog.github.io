@@ -13,12 +13,153 @@ date: 2021-04-16 16:00:16
 
 ### 什么是反射？
 反射是在运行状态中，**对于任意一个类，** 都能够知道这个类的所有属性和方法；**对于任意一个对象，** 都能够调用它的任意一个方法和属性；这种**动态获取的信息以及动态调用对象的方法**的功能称为 Java 语言的反射机制。
+
 ### 哪里用到反射机制？
 
 1. JDBC中，利用反射 **(Class.forName(xxx))** 动态加载了数据库驱动程序。
 2. Web服务器中利用反射调用了Sevlet的服务方法。
 3. Eclispe等开发工具利用反射动态刨析对象的类型与结构，动态提示对象的属性和方法。
 4. 很多框架都用到反射机制，注入属性，调用方法，如Spring。
+
+### 反射的基本原理(一)
+
+我们根据方法的反射调用来分析下源码，看看Method.invoke是如何实现的。
+
+```java
+@CallerSensitive
+    public Object invoke(Object obj, Object... args)
+        throws IllegalAccessException, IllegalArgumentException,
+           InvocationTargetException
+    {
+        if (!override) {
+            if (!Reflection.quickCheckMemberAccess(clazz, modifiers)) {
+                Class<?> caller = Reflection.getCallerClass();
+                checkAccess(caller, clazz, obj, modifiers);
+            }
+        }
+        MethodAccessor ma = methodAccessor;             // read volatile
+        if (ma == null) {
+            ma = acquireMethodAccessor();
+        }
+        return ma.invoke(obj, args);
+    }
+```
+
+通过源码可以看到其实invoke方法实际上是委派给了MethodAccessor来处理，MethodAccessor是一个接口，有两个具体实现方法（methodAccessorImpl 是一个抽象的实现方法另外两个实现对象继承此对象），委托实现和本地实现。从代码中可以看到第一次调用时本地methodAccessor是空，所以会调用acquireMethodAccessor（）方法。
+
+![20210828220415](https://marlowe.oss-cn-beijing.aliyuncs.com/img/20210828220415.png)
+
+接下来看下获取MethodAccessor实现方法，首先检查是否已经创建，如果创建了就使用创建的，如果没有创建就调用工厂方法创建一个。
+
+```java
+private MethodAccessor acquireMethodAccessor() {
+        // 首先检查是否已经创建了实现，如果创建了就使用创建的，如果没有就地要用工厂方法创建一个
+        MethodAccessor tmp = null;
+        if (root != null) tmp = root.getMethodAccessor();
+        if (tmp != null) {
+            methodAccessor = tmp;
+        } else {
+            // Otherwise fabricate one and propagate it up to the root
+            tmp = reflectionFactory.newMethodAccessor(this);
+            setMethodAccessor(tmp);
+        }
+
+        return tmp;
+    }
+```
+
+看下反射工厂的newMethodAccessor 方法，从下面可以看到先是检查初始化，然后判断是否开启动态代理实现，如果开启了就会使用动态实现方式（直接生成字节码方式），如果没有开启就会生成一个委派实现，委派实现的具体实现是使用本地实现来完成。
+
+```java
+public MethodAccessor newMethodAccessor(Method var1) {
+        checkInitted();
+        if (noInflation && !ReflectUtil.isVMAnonymousClass(var1.getDeclaringClass())) {
+            return (new MethodAccessorGenerator()).generateMethod(var1.getDeclaringClass(), var1.getName(), var1.getParameterTypes(), var1.getReturnType(), var1.getExceptionTypes(), var1.getModifiers());
+        } else {
+            NativeMethodAccessorImpl var2 = new NativeMethodAccessorImpl(var1);
+            DelegatingMethodAccessorImpl var3 = new DelegatingMethodAccessorImpl(var2);
+            var2.setParent(var3);
+            return var3;
+        }
+    }
+```
+
+看到这里可能会有一个疑问，为什么使用委派实现穿插在中间，这是因为Java反射实现机制还有一种动态生成字节码，通过invoke指令直接调用目标的方法，委派实现是为了在动态实现和本地实现之间进行切换。
+
+动态实现和本地实现相比，执行速度要快上20倍，这是因为动态实现直接执行字节码，不用从java到c++ 再到java 的转换，但是因为生成字节码的操作比较耗费时间，所以如果仅一次调用的话反而是本地时间快3到4倍。
+
+为了防止很多反射调用只调用一次，java 虚拟机设置了一个阀值等于15（通过-Dsun.reflect.inflationThreshold 参数来调整），当一个反射调用次数达到15次时，委派实现的委派对象由本地实现转换为动态实现，这个过程称之为Inflation。
+
+反射调用的Inflation机制可以通过参数（-Dsun.reflect.noInflation=true）来关闭（对应代码是newMethodAccessor 方法中的if 判断）。这样在反射调用开始的时候就会直接使用动态实现，而不会使用委派实现或者本地实现。
+
+### 反射的基本原理(二)
+
+#### 整体流程
+
+调用反射的总体流程如下：
+
+* **准备阶段**：编译期装载所有的类，将每个类的元信息保存至Class类对象中，每一个类对应一个Class对象
+* **获取Class对象**：调用x.class/x.getClass()/Class.forName() 获取x的Class对象clz（这些方法的底层都是native方法，是在JVM底层编写好的，涉及到了JVM底层，就先不进行探究了）
+* **进行实际反射操作**：通过clz对象获取Field/Method/Constructor对象进行进一步操作
+
+整体过程中，需要注意的是进行实际反射操作的这个阶段，我们需要关注的点有：
+
+* 我们是如何通过Class获取到Field/Method/Construcor的？
+* 获取到的Field是如何具有对象属性值的？
+* 获取到的Method是如何调用的？
+
+下面就来详细解释这些问题：
+
+#### 如何通过Class获取Field/Method/Construcor
+
+探究Class类源码的时候，我们发现Class类中包含的ReflectionData，用于保存进行反射操作的基础信息
+
+![20210829001652](https://marlowe.oss-cn-beijing.aliyuncs.com/img/20210829001652.png)
+
+这显然是我们获取Field/Method/Constructor的直接来源，那么这个数据结构中的值又是从哪里来的呢？我们以Field的获取为例进行探究，我们先看看getDeclaredField这个方法：
+
+![20210829001710](https://marlowe.oss-cn-beijing.aliyuncs.com/img/20210829001710.png)
+
+内部调用了privateGetDeclaredFields方法，我们进去看：
+
+![20210829001731](https://marlowe.oss-cn-beijing.aliyuncs.com/img/20210829001731.png)
+
+第一处是从reflectionData直接取，reflectionData是弱引用，这算是一种缓存获取；第二处是直接调用getDeclaredFields0()这个方法获取，这是一个native方法，应当是从JVM内直接获取
+
+至于Method和Constructor的获取则是大同小异，
+
+至此我们基本搞清楚了Class是如何获取Field/Method/Constructor的了
+
+#### Field是如何具有对象属性值
+
+很显然，因为Field对象是来自JVM的，JVM中自然保存着对象的详细属性值，因此通过反射获取到的Field就能包含着原始对象的属性值
+
+#### 获取到的Method如何调用
+
+通过对源码的查看，调用Method的过程大致如下：
+
+![20210829001819](https://marlowe.oss-cn-beijing.aliyuncs.com/img/20210829001819.png)
+
+如上图所示，我们大致经历了一个这样的过程：
+
+* Method对象通过MethodAcessor的invoke调用方法 ->
+* 通过反射工厂生成MethodAcessor对象 ->
+* 生成NativeMethodAcessorImpl，最终由DelegatingMethodAccessorImpl代理 ->
+* 调用时先进入的是DelegatingMethodAccessorImpl的invoke方法 ->
+* DelegatingMethodAcessorImpl是代理对象，实质上最终调用的是NativeMethodAcessorImpl的invoke方法
+* 所有的方法反射都是先走NativeMethodAccessorImpl，默认调了15次之后，才生成一个GeneratedMethodAccessorXXX类，生成好之后就会走这个生成的类的invoke方法了
+
+> 最后一点调用十五次阈值的原因在于：存在两种MethodAcessor，Native 版本一开始启动快，但是随着运行时间边长，速度变慢。Java 版本一开始加载慢，但是随着运行时间边长，速度变快。正是因为两种存在这些问题，所以第一次加载的时候我们会发现使用的是 NativeMethodAccessorImpl 的实现，而当反射调用次数超过 15 次之后，则使用 MethodAccessorGenerator 生成的 MethodAccessorImpl 对象去实现反射。
+
+这其实是借助代理模式实现了一个性能优化手段，这种利用代理模式灵活适配的思想很值得学习。  
+
+### 反射调用的性能开销
+
+接下来我们就来看下反射调用的性能开销，在反射调用方法的例子中，我们先后调用了Class.forName,Class.getMethod,以及Method.invoke 三个操作。其中Class.forName 会调用本地方法，Class.getMethod 会遍历该类的公有方法。如果没有匹配到它还会遍历父级的公有方法，可以知道这两个操作非常耗费时间。
+
+值得注意的是，以getMethod 方法为代表的查询操作，会返回一份查询结果的拷贝信息。因此我们避免在热点代码中使用返回Method数组的getMethods 或者getDeclareMethods方法，以减少不必要的堆空间的消耗。
+
+在实际的开发中 ，我们通常会在应用程序中缓存Class.forName 和 Class.getMethod 的结果。因为下面我们就针对Method.invoke 反射调用的性能开销进行分析。
 
 ### 什么叫对象序列化，什么是反序列化，实现对象序列化需要做哪些工作？
 

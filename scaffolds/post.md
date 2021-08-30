@@ -1,7 +1,7 @@
 ---
 title: {{ title }}
-date: {{ date }}
+author: Marlowe
 tags:
 categories:
-author: Marlowe
+date: {{ date }}
 ---
