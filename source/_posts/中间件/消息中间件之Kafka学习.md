@@ -291,14 +291,14 @@ At Least Once 可以保证数据不丢失，但是不能保证数据不重复；
 ```
 At Least Once + 幂等性 = Exactly Once
 ```
+**幂等性的具体实现：**
+要启用幂等性，只需要将 Producer 的参数中 `enable.idempotence` 设置为 true 即可。**Kafka的幂等性实现其实就是将原来下游需要做的去重放在了数据上游。** **开启幂等性的 Producer 在初始化的时候会被分配一个 PID，发往同一 Partition 的消息会附带 Sequence Number。** 而Broker 端会对`<PID, Partition, SeqNumber>`做缓存，当具有相同主键的消息提交时， **Broker 只会持久化一条。**
 
-要启用幂等性，只需要将 Producer 的参数中 `enable.idempotence` 设置为 true 即可。 Kafka的幂等性实现其实就是将原来下游需要做的去重放在了数据上游。开启幂等性的 Producer 在初始化的时候会被分配一个 PID，发往同一 Partition 的消息会附带 Sequence Number。而Broker 端会对`<PID, Partition, SeqNumber>`做缓存，当具有相同主键的消息提交时， Broker 只会持久化一条。
-
-但是 PID 重启就会变化，同时不同的 Partition 也具有不同主键，所以幂等性无法保证跨分区跨会话的 Exactly Once。
+但是 PID 重启就会变化，同时不同的 Partition 也具有不同主键，**所以幂等性无法保证跨分区跨会话的 Exactly Once。**
 
 ### Kafka事务
 
-Kafka 从 0.11 版本开始引入了事务支持。事务可以保证 Kafka 在 Exactly Once 语义的基础上，生产和消费可以跨分区和会话，要么全部成功，要么全部失败。
+Kafka 从 0.11 版本开始引入了事务支持。**事务可以保证 Kafka 在 Exactly Once 语义的基础上，生产和消费可以跨分区和会话，要么全部成功，要么全部失败。**
 
 #### Producer 事务
 
