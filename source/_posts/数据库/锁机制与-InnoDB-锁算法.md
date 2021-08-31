@@ -8,6 +8,10 @@ categories: 数据库
 abbrlink: 28295
 date: 2021-01-11 10:19:50
 ---
+
+Next-Key Locks 是 MySQL 的 InnoDB 存储引擎的一种锁实现。
+
+MVCC 不能解决幻影读问题，Next-Key Locks 就是为了解决这个问题而存在的。在可重复读（REPEATABLE READ）隔离级别下，使用 MVCC + Next-Key Locks 可以解决幻读问题。而Next-Key就是行锁+Gap锁的组合。
 <!--more-->
 
 ### MyISAM 和 InnoDB 存储引擎使用的锁
@@ -24,19 +28,17 @@ date: 2021-01-11 10:19:50
 
 ### InnoBD的三种行级锁
 
-#### Record lock：单个行记录上的锁
+#### 1. Record lock：单个行记录上的锁
 
 锁定一个记录上的索引，而不是记录本身。如果表没有设置索引，InnoDB 会自动在主键上创建隐藏的聚簇索引，因此 Record Locks依然可以使用。
 
-#### Gap lock：间隙锁，锁定一个范围，不包括记录本身
+#### 2. Gap lock：间隙锁，锁定一个范围，不包括记录本身
 
 间隙锁，锁定一个范围，但不包括记录本身。GAP锁的目的，是为了防止同一事务的两次当前读，出现幻读的情况。
 
-#### Next-key lock：record+gap 锁定一个范围，包含记录本身
+#### 3. Next-key lock：record+gap 锁定一个范围，包含记录本身
 
 1、2组合，锁定一个范围，并且锁定记录本身。对于行的查询，都是采用该方法，主要目的是解决幻读的问题。
-Gap Lock
-
 
 ### Gap Lock
 
