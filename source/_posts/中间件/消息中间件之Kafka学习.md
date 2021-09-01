@@ -236,7 +236,7 @@ kafka就又会重新保存这份重发数据，导致数据重复。
 
 新版的kafka加了个幂等性，用参数enable.idempotence=true就可以开启。
 
-开启之后会使用poductorId、partition.id、seqNumber(消息序号，与offset不一样)这三个做缓存，用于判断重发的数据是否已经被leader以及follower保存过了，如果保存过了，就不会再保存，这样就避免重复消息了。
+开启之后会使用`poductorId、partition.id、seqNumber`(消息序号，与offset不一样)这三个做缓存，用于判断重发的数据是否已经被leader以及follower保存过了，如果保存过了，就不会再保存，这样就避免重复消息了。
 
 
 **助记：返ACK前，0无落盘，1一落盘，-1全落盘，（落盘：消息存到本地）**
