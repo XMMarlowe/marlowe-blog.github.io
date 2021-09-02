@@ -2,7 +2,7 @@
 title: 海量数据Top K问题
 author: Marlowe
 tags: Top K
-categories: 算法与数据结构
+categories: 大数据
 abbrlink: 33494
 date: 2021-05-07 13:40:02
 ---
