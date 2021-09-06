@@ -337,6 +337,86 @@ mapper.xml：
 
 多个参数，那也就是使用注解@Param取名字解决即可。
 
+### 区别
+
+#### 区别1:最终执行的SQL不同
+
+```sql
+select * from user where name = #{name}
+```
+
+最终执行的SQL为:select * from user where name = '123'
+
+```sql
+select * from user where name = ${name}
+```
+
+最终执行的SQL为:select * from user where name =123,
+
+这个SQL在执行的时候会报错的,为了避免报错,需要修改为:name=’KaTeX parse error: Expected 'EOF', got '#' at position 25: …要加上单引号才可以 看到了吗,#̲{name}解析之后的SQL中…{name}最终解析的SQL中的参数name=123,没有单引号。
+
+#### 区别2:动态SQL解析阶段解析的不同
+
+(1)MyBatis的强大特性:动态 SQL，也是它优于其他 ORM 框架的一个重要原因。
+
+(2)mybatis 在对 sql 语句进行预编译之前，会对 sql 进行动态解析，解析为一个 BoundSql 对象，也是在此处对动态 SQL 进行处理的。在动态 SQL 解析阶段， #{ } 和 ${ } 会有不同的表现
+
+```sql
+select * from user where name = #{name}; 
+```
+
+ #{}在动态解析的时候， 会解析成一个参数标记符。就是解析之后的语句是
+
+```sql
+select * from user where name = ?; 
+```
+
+那么我们使用 ${}的时候
+
+```sql
+select * from user where name = ${name}; 
+```
+
+${}在动态解析的时候，会将我们传入的参数当做String字符串填充到我们的语句中，就会变成下面的语句
+
+```sql
+select * from user where name = dato; 
+```
+
+预编译之前的 SQL 语句已经不包含变量了，完全已经是常量数据了。相当于我们普通没有变量的sql了。
+
+**综上所得**
+
+${ } 变量的替换阶段是在动态 SQL 解析阶段，而 #{ }变量的替换是在 DBMS 中。
+
+#### 区别3:
+
+ #方式能够很大程度防止sql注入(使用占位符,最终的参数会有单引号)。
+$方式无法防止Sql注入(直接解析了,没有单引号,这样的话可以直接写SQL呀,比如select * from ${tableName},当tableName的值为:‘user;delete from user’,这样最终解析的SQL为:select * from user;delete from user,这个就会有SQL注入的问题)。
+
+### Mybatis中何时使用jdbcType?
+
+(1)这个SQL有时候这样写:
+
+```sql
+select * from user where name = #{name},
+```
+
+有时候可以这样写:
+
+```sql
+select * from user where name = #{name,jdbcType=VARCHAR},
+```
+
+到底什么时候使用jdbcType呢,什么时候不使用呢???
+
+(2)当传入的参数name的值为空的时候,这个需要带上jdbcType=VARCHAR这个,其他不为空的情况下就不用带jdbcType=VARCHAR
+
+(3)如果参入的参数name的值为空,而没有加上jdbcType这个来限定类型的话,执行的SQL会报异常
+
+```
+Error querying database.  Cause: org.postgresql.util.PSQLException: ERROR: could not determine data type of parameter $1
+```
 
 
 
