@@ -199,8 +199,7 @@ CGLIB(Code Generation Library)是一个基于ASM的字节码生成库，它允�
 
 你需要自定义 MethodInterceptor 并重写 intercept 方法，intercept 用于拦截增强被代理类的方法。
 ```java
-public interface MethodInterceptor
-extends Callback{
+public interface MethodInterceptor extends Callback{
     // 拦截被代理类中的方法
     public Object intercept(Object obj, java.lang.reflect.Method method, Object[] args,
                                MethodProxy proxy) throws Throwable;
@@ -232,6 +231,7 @@ extends Callback{
 package github.javaguide.dynamicProxy.cglibDynamicProxy;
 
 public class AliSmsService {
+
     public String send(String message) {
         System.out.println("send message:" + message);
         return message;
@@ -270,6 +270,8 @@ public class DebugMethodInterceptor implements MethodInterceptor {
 }
 ```
 **3.获取代理类**
+
+```java
 import net.sf.cglib.proxy.Enhancer;
 
 public class CglibProxyFactory {
@@ -287,8 +289,8 @@ public class CglibProxyFactory {
         return enhancer.create();
     }
 }
-```java
 ```
+
 **4.实际使用**
 ```java
 AliSmsService aliSmsService = (AliSmsService) CglibProxyFactory.getProxy(AliSmsService.class);

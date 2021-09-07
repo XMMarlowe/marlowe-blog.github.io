@@ -36,6 +36,7 @@ public void savePerson() {
 
 ```java
 public class OrdersService {
+
     private AccountDao accountDao;
 
     public void setOrdersDao(AccountDao accountDao) {
@@ -45,10 +46,10 @@ public class OrdersService {
   @Transactional(propagation = Propagation.REQUIRED,
                 isolation = Isolation.DEFAULT, readOnly = false, timeout = -1)
     public void accountMoney() {
-    //小红账户多1000
+        //小红账户多1000
         accountDao.addMoney(1000,xiaohong);
         //模拟突然出现的异常，比如银行中可能为突然停电等等
-    //如果没有配置事务管理的话会造成，小红账户多了1000而小明账户没有少钱
+        //如果没有配置事务管理的话会造成，小红账户多了1000而小明账户没有少钱
         int i = 10 / 0;
         //小王账户少1000
         accountDao.reduceMoney(1000,xiaoming);
@@ -86,6 +87,7 @@ public class OrdersService {
 ```java
 @Autowired
 private TransactionTemplate transactionTemplate;
+
 public void testTransaction() {
 
         transactionTemplate.execute(new TransactionCallbackWithoutResult() {
@@ -337,10 +339,10 @@ public enum Propagation {
 
 1. **TransactionDefinition.PROPAGATION_REQUIRED**
 
-使用的最多的一个事务传播行为，我们平时经常使用的@Transactional注解默认使用就是这个事务传播行为。如果当前存在事务，则加入该事务；如果当前没有事务，则创建一个新的事务。也就是说：
+使用的最多的一个事务传播行为，**我们平时经常使用的@Transactional注解默认使用就是这个事务传播行为**。如果当前存在事务，则加入该事务；如果当前没有事务，则创建一个新的事务。也就是说：
 
-1. 如果外部方法没有开启事务的话，Propagation.REQUIRED修饰的内部方法会新开启自己的事务，且开启的事务相互独立，互不干扰。
-2. 如果外部方法开启事务并且被Propagation.REQUIRED的话，所有Propagation.REQUIRED修饰的内部方法和外部方法均属于同一事务 ，只要一个方法回滚，整个事务均回滚。
+1. 如果**外部方法没有开启事务**的话，Propagation.REQUIRED**修饰的内部方法会新开启自己的事务，且开启的事务相互独立，互不干扰**。
+2. 如果**外部方法开启事务并且被Propagation.REQUIRED**的话，**所有Propagation.REQUIRED修饰的内部方法和外部方法均属于同一事务 ，只要一个方法回滚，整个事务均回滚。**
 
 举个例子：如果我们上面的aMethod()和bMethod()使用的都是PROPAGATION_REQUIRED传播行为的话，两者使用的就是同一个事务，只要其中一个方法回滚，整个事务均回滚。
 
@@ -364,9 +366,9 @@ Class B {
 
 2. **TransactionDefinition.PROPAGATION_REQUIRES_NEW**
 
-创建一个新的事务，如果当前存在事务，则把当前事务挂起。也就是说不管外部方法是否开启事务，Propagation.REQUIRES_NEW修饰的内部方法会新开启自己的事务，且开启的事务相互独立，互不干扰。
+创建一个新的事务，**如果当前存在事务，则把当前事务挂起**。也就是说**不管外部方法是否开启事务**，**Propagation.REQUIRES_NEW修饰的内部方法会新开启自己的事务，且开启的事务相互独立，互不干扰**。
 
-举个例子：如果我们上面的bMethod()使用PROPAGATION_REQUIRES_NEW事务传播行为修饰，aMethod还是用PROPAGATION_REQUIRED修饰的话。如果aMethod()发生异常回滚，bMethod()不会跟着回滚，因为 bMethod()开启了独立的事务。但是，如果 bMethod()抛出了未被捕获的异常并且这个异常满足事务回滚规则的话,aMethod()同样也会回滚，因为这个异常被 aMethod()的事务管理机制检测到了。
+举个例子：如果我们上面的bMethod()使用PROPAGATION_REQUIRES_NEW事务传播行为修饰，aMethod还是用PROPAGATION_REQUIRED修饰的话。如果aMethod()发生异常回滚，bMethod()不会跟着回滚，**因为 bMethod()开启了独立的事务**。但是，如果 bMethod()抛出了**未被捕获的异常并且这个异常满足事务回滚规则的话**,aMethod()同样也会回滚，**因为这个异常被 aMethod()的事务管理机制检测到了**。
 
 ```java
 Class A {
@@ -388,10 +390,11 @@ Class B {
 
 3. **TransactionDefinition.PROPAGATION_NESTED**
 
-如果当前存在事务，则创建一个事务作为当前事务的嵌套事务来运行；如果当前没有事务，则该取值等价于TransactionDefinition.PROPAGATION_REQUIRED。也就是说：
+**如果当前存在事务，则创建一个事务作为当前事务的嵌套事务来运行**；**如果当前没有事务**，则该取值**等价于**TransactionDefinition.PROPAGATION_REQUIRED。也就是说：
 
-1. 在外部方法未开启事务的情况下Propagation.NESTED和Propagation.REQUIRED作用相同，修饰的内部方法都会新开启自己的事务，且开启的事务相互独立，互不干扰。
-2. 如果外部方法开启事务的话，Propagation.NESTED修饰的内部方法属于外部事务的子事务，外部主事务回滚的话，子事务也会回滚，而内部子事务可以单独回滚而不影响外部主事务和其他子事务。
+1. 在**外部方法未开启事务的情况下**Propagation.NESTED和Propagation.REQUIRED作用相同，**修饰的内部方法都会新开启自己的事务，且开启的事务相互独立，互不干扰**。
+2. **如果外部方法开启事务的话**，Propagation.NESTED修饰的内部方法**属于外部事务的子事务**，**外部主事务回滚的话，子事务也会回滚，而内部子事务可以单独回滚而不影响外部主事务和其他子事务。**
+
 这里还是简单举个例子：
 
 如果 aMethod() 回滚的话，bMethod()和bMethod2()都要回滚，而bMethod()回滚的话，并不会造成 aMethod() 和bMethod()2回滚。
@@ -421,7 +424,7 @@ Class B {
 
 4. **TransactionDefinition.PROPAGATION_MANDATORY**
 
-如果当前存在事务，则加入该事务；如果当前没有事务，则抛出异常。（mandatory：强制性）
+**如果当前存在事务，则加入该事务；如果当前没有事务，则抛出异常**。（mandatory：强制性）
 
 这个使用的很少，就不举例子来说了。
 
@@ -479,9 +482,9 @@ public enum Isolation {
 
 下面我依次对每一种事务隔离级别进行介绍：
 
-* **TransactionDefinition.ISOLATION_DEFAULT** :使用后端数据库默认的隔离级别，MySQL 默认采用的 REPEATABLE_READ 隔离级别 Oracle 默认采用的 READ_COMMITTED 隔离级别.
-* **TransactionDefinition.ISOLATION_READ_UNCOMMITTED** :最低的隔离级别，使用这个隔离级别很少，因为它允许读取尚未提交的数据变更，可能会导致脏读、幻读或不可重复读
-* **TransactionDefinition.ISOLATION_READ_COMMITTED** : 允许读取并发事务已经提交的数据，可以阻止脏读，但是幻读或不可重复读仍有可能发生
+* **TransactionDefinition.ISOLATION_DEFAULT** :**使用后端数据库默认的隔离级别**，MySQL 默认采用的 REPEATABLE_READ 隔离级别 Oracle 默认采用的 READ_COMMITTED 隔离级别。
+* **TransactionDefinition.ISOLATION_READ_UNCOMMITTED** :最低的隔离级别，使用这个隔离级别很少，因为它允许读取尚未提交的数据变更，可能会导致脏读、幻读或不可重复读。
+* **TransactionDefinition.ISOLATION_READ_COMMITTED** : 允许读取并发事务已经提交的数据，可以阻止脏读，但是幻读或不可重复读仍有可能发生。
 * **TransactionDefinition.ISOLATION_REPEATABLE_READ** : 对同一字段的多次读取结果都是一致的，除非数据是被本身事务自己所修改，可以阻止脏读和不可重复读，但幻读仍有可能发生。
 * **TransactionDefinition.ISOLATION_SERIALIZABLE**: 最高的隔离级别，完全服从 ACID 的隔离级别。所有的事务依次逐个执行，这样事务之间就完全不可能产生干扰，也就是说，该级别可以防止脏读、不可重复读以及幻读。但是这将严重影响程序的性能。通常情况下也不会用到该级别。
 
@@ -534,14 +537,14 @@ public interface TransactionDefinition {
 
 > MySQL 默认对每一个新建立的连接都启用了autocommit模式。在该模式下，每一个发送到 MySQL 服务器的sql语句都会在一个单独的事务中进行处理，执行结束后会自动提交事务，并开启一个新的事务。
 
-但是，如果你给方法加上了Transactional注解的话，这个方法执行的所有sql会被放在一个事务中。如果声明了只读事务的话，数据库就会去优化它的执行，并不会带来其他的什么收益。
+但是，如果你给方法加上了Transactional注解的话，**这个方法执行的所有sql会被放在一个事务中**。**如果声明了只读事务的话，数据库就会去优化它的执行，并不会带来其他的什么收益。**
 
-如果不加Transactional，每条sql会开启一个单独的事务，中间被其它事务改了数据，都会实时读取到最新值。
+**如果不加Transactional，每条sql会开启一个单独的事务，中间被其它事务改了数据，都会实时读取到最新值。**
 
-分享一下关于事务只读属性，其他人的解答：
+**分享一下关于事务只读属性，其他人的解答：**
 
 1. 如果你一次执行单条查询语句，则没有必要启用事务支持，数据库默认支持 SQL 执行期间的读一致性；
-2. 如果你一次执行多条查询语句，例如统计查询，报表查询，在这种场景下，多条查询 SQL 必须保证整体的读一致性，否则，在前条 SQL 查询之后，后条 SQL 查询之前，数据被其他用户改变，则该次整体的统计查询将会出现读数据不一致的状态，此时，应该启用事务支持
+2. 如果你一次执行多条查询语句，例如**统计查询，报表查询，在这种场景下**，**多条查询 SQL 必须保证整体的读一致性，否则，在前条 SQL 查询之后，后条 SQL 查询之前，数据被其他用户改变，则该次整体的统计查询将会出现读数据不一致的状态，此时，应该启用事务支持**。
 
 ##### 3.3.5. 事务回滚规则
 
@@ -599,7 +602,7 @@ public @interface Transactional {
 }
 ```
 
-@Transactional 的常用配置参数总结（只列巨额 5 个我平时比较常用的）：
+@Transactional 的常用配置参数总结（只列举了 5 个我平时比较常用的）：
 
 | 属性名| 	说明| 
 | :--:|:--: |:--: | 
@@ -641,13 +644,13 @@ public class DefaultAopProxyFactory implements AopProxyFactory, Serializable {
 }
 ```
 
-如果一个类或者一个类中的 public 方法上被标注@Transactional 注解的话，Spring 容器就会在启动的时候为其创建一个代理类，在调用被@Transactional 注解的 public 方法的时候，实际调用的是，TransactionInterceptor 类中的 invoke()方法。这个方法的作用就是在目标方法之前开启事务，方法执行过程中如果遇到异常的时候回滚事务，方法调用完成之后提交事务。
+如果一个类或者一个类中的 public 方法上被标注@Transactional 注解的话，Spring 容器就会在启动的时候为其创建一个代理类，**在调用被@Transactional 注解的 public 方法的时候，实际调用的是，TransactionInterceptor 类中的 invoke()方法**。**这个方法的作用就是在目标方法之前开启事务，方法执行过程中如果遇到异常的时候回滚事务，方法调用完成之后提交事务。**
 
 > TransactionInterceptor 类中的 invoke()方法内部实际调用的是 TransactionAspectSupport 类的 invokeWithinTransaction()方法。由于新版本的 Spring 对这部分重写很大，而且用到了很多响应式编程的知识，这里就不列源码了。
 
 ##### 4)Spring AOP 自调用问题
 
-若同一类中的其他没有 @Transactional 注解的方法内部调用有 @Transactional 注解的方法，有@Transactional 注解的方法的事务会失效。
+**若同一类中的其他没有 @Transactional 注解的方法内部调用有 @Transactional 注解的方法，有@Transactional 注解的方法的事务会失效。**
 
 这是由于Spring AOP代理的原因造成的，因为只有当 @Transactional 注解的方法在类以外被调用的时候，Spring 事务管理才生效。
 
@@ -667,7 +670,7 @@ private void method1() {
   }
 }
 ```
-解决办法就是避免同一类中自调用或者使用 AspectJ 取代 Spring AOP 代理。
+**解决办法就是避免同一类中自调用或者使用 AspectJ 取代 Spring AOP 代理。**
 
 ##### 5) @Transactional 的使用注意事项总结
 
@@ -716,7 +719,7 @@ private void method1() {
 
 **其他情况：**
 
-* **TransactionDefinition.PROPAGATION_NESTED：** 如果当前存在事务，则创建一个事务作为当前事务的嵌套事务来运行；如果当前没有事务，则该取值等价于TransactionDefinition.PROPAGATION_REQUIRED。
+* **TransactionDefinition.PROPAGATION_NESTED：** 如果当前存在事务，则创建一个事务作为当前事务的嵌套事务来运行；**如果当前没有事务，则该取值等价于TransactionDefinition.PROPAGATION_REQUIRED。**
 
 #### @Transactional(rollbackFor = Exception.class)注解了解吗？
 
@@ -727,7 +730,7 @@ private void method1() {
 在`@Transactional`注解中如果不配置`rollbackFor`属性,那么事务只会在遇到`RuntimeException`的时候才会回滚,加上`rollbackFor=Exception.class`,可以让事务在遇到非运行时异常时也回滚。
 
 
-5. ### 参考
+### 5. 参考
 
 [Spring 事务](https://snailclimb.gitee.io/javaguide/#/docs/system-design/framework/spring/Spring%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93?id=_8-spring-%e4%ba%8b%e5%8a%a1)
 
