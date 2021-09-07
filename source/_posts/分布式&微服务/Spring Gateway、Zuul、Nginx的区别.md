@@ -1,7 +1,7 @@
 ---
 title: Spring Gateway、Zuul、Nginx的区别
 author: Marlowe
-categories: 个人项目
+categories: 分布式&微服务
 abbrlink: 35733
 date: 2021-08-06 20:25:04
 tags: 
