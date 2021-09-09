@@ -1,5 +1,5 @@
 ---
-title: 初识MySQL索引实现原理
+title: MySQL索引实现原理
 author: Marlowe
 tags:
   - MySQL
@@ -97,6 +97,8 @@ MySQL索引的实现原理，以及什么时候会走索引...
 （A，B，）---会使用索引
 
 （A，B，C）---会使用索引
+
+（C，B，A    ）---会使用索引
 
 （，B，C）---不会使用索引
 

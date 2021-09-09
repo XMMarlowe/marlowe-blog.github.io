@@ -215,6 +215,9 @@ Boolean lock = redisTemplate.opsForValue().setIfAbsent(locKey, uuid,3,TimeUnit.S
 
 ![20210506170844](http://marlowe.oss-cn-beijing.aliyuncs.com/img/20210506170844.png)
 
+### Lua脚本执行原理
+
+
 
 ### 总结
 
