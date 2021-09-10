@@ -1,8 +1,9 @@
 ---
 title: ES 在数据量很大的情况下（数十亿级别）如何提高查询效率啊？
 author: Marlowe
-tags: -ES
+tags: '-ES'
 categories: 中间件
+abbrlink: 27335
 date: 2020-12-09 19:16:02
 ---
 
