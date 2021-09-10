@@ -206,6 +206,8 @@ Lua 脚本详解：
 
 ![20210506170821](http://marlowe.oss-cn-beijing.aliyuncs.com/img/20210506170821.png)
 
+[Redis Lua脚本的执行原理](https://segmentfault.com/a/1190000018808492)
+
 
 项目中正确使用：
 

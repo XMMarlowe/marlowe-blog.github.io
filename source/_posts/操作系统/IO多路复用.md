@@ -104,3 +104,10 @@ Java的NIO当中使用的是那种机制？
 在windows 下，WindowsSelectorProvider。
 而Linux下，根据Linux的内核版本，2.6版本以上，就是EPollSelectorProvider, 否则就是 默认的PollSelectorProvider。
 
+### epoll详解文章推荐
+
+[彻底搞懂epoll高效运行的原理](https://www.jianshu.com/p/31cdfd6f5a48)
+
+[十个问题理解Linux epoll工作原理](https://cloud.tencent.com/developer/article/1831360)
+
+[epoll 或者 kqueue 的原理是什么？](https://www.zhihu.com/question/20122137)
