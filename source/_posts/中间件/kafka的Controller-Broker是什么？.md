@@ -1,12 +1,13 @@
 ---
 title: kafka的Controller Broker是什么？
 author: Marlowe
-date: 2021-08-30 08:13:36
-tags: 
+tags:
   - Kafka
   - Controller
   - Broker
 categories: 中间件
+abbrlink: 7444
+date: 2021-08-30 08:13:36
 ---
 控制器组件（Controller），是 Apache Kafka 的核心组件。它的主要作用是在 Apache ZooKeeper 的帮助下管理和协调整个 Kafka 集群。集群中任意一台 Broker 都能充当控制器的角色，但是，在运行过程中，只能有一个 Broker 成为控制器，行使其管理和协调的职责。
 <!--more-->

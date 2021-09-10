@@ -1,11 +1,12 @@
 ---
 title: 一文搞懂 Redis 高性能之 IO 多路复用
 author: Marlowe
-date: 2021-04-15 23:00:51
-tags: 
+tags:
   - Redis
   - IO多路复用
 categories: NoSQL
+abbrlink: 6
+date: 2021-04-15 23:00:51
 ---
 
 本文从 IO 并发性能提升来整体思考，来逐步剖析 IO 多路复用的原理。

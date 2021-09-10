@@ -1,8 +1,9 @@
 ---
-title: ==和 equals 的区别
+title: '==和 equals 的区别'
 author: Marlowe
 tags: equals
 categories: Java
+abbrlink: 30420
 date: 2021-05-07 21:29:19
 ---
 

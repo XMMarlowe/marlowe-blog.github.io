@@ -3,6 +3,7 @@ title: Linux 文本处理三剑客：grep、sed 和 awk
 author: Marlowe
 tags: Linux
 categories: 操作系统
+abbrlink: 35403
 date: 2021-07-21 21:27:24
 ---
 

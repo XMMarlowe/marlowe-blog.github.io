@@ -1,9 +1,10 @@
 ---
 title: Java线程安全的集合类
 author: Marlowe
-date: 2021-08-29 16:54:56
 tags: 集合类
 categories: Java
+abbrlink: 1493
+date: 2021-08-29 16:54:56
 ---
 
 <!--more-->

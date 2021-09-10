@@ -1,9 +1,10 @@
 ---
 title: FutureTask详解
 author: Marlowe
-date: 2021-08-29 17:08:03
 tags: FutureTask
 categories: 并发
+abbrlink: 30134
+date: 2021-08-29 17:08:03
 ---
 
 Future 表示了一个任务的生命周期，是一个可取消的异步运算，可以把它看作是一个异步操作的结果的占位符，它将在未来的某个时刻完成，并提供对其结果的访问。在并发包中许多异步任务类都继承自Future，其中最典型的就是 FutureTask。

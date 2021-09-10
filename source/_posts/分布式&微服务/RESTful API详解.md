@@ -3,6 +3,7 @@ title: RESTful API详解
 author: Marlowe
 tags: RESTful
 categories: 分布式&微服务
+abbrlink: 15254
 date: 2021-05-14 16:22:42
 ---
 

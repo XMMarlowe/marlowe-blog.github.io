@@ -1,9 +1,10 @@
 ---
 title: 浅谈StringBuilder和StringBuffer的区别
 author: Marlowe
-date: 2021-08-28 21:36:34
 tags: String
 categories: Java
+abbrlink: 29428
+date: 2021-08-28 21:36:34
 ---
 String StringBuffer 和 StringBuilder 的区别是什么? String 为什么是不可变的?
 <!--more-->

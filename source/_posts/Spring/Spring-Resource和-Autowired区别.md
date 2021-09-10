@@ -1,11 +1,12 @@
 ---
 title: Spring @Resource和@Autowired区别
 author: Marlowe
-date: 2020-08-28 21:10:26
-tags: 
+tags:
   - 注解
   - 自动注入
 categories: Spring
+abbrlink: 53842
+date: 2020-08-28 21:10:26
 ---
 
 @Resource和@Autowired都是做bean的注入时使用，其实@Resource并不是Spring的注解，它的包是javax.annotation.Resource，需要导入，但是Spring支持该注解的注入。

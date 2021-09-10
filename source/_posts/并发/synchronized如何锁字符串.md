@@ -1,12 +1,13 @@
 ---
 title: synchronized如何锁字符串?
 author: Marlowe
-date: 2021-09-03 21:10:08
-tags: 
+tags:
   - synchronized
   - 字符串
   - intern
 categories: 并发
+abbrlink: 45266
+date: 2021-09-03 21:10:08
 ---
 
 记录一下synchronized锁字符串的问题，以及解决方案。

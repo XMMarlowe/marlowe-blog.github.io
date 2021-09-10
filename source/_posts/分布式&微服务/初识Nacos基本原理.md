@@ -1,11 +1,12 @@
 ---
 title: 初识Nacos基本原理
 author: Marlowe
-date: 2021-08-29 23:48:15
-tags: 
+tags:
   - Nacos
   - 原理
 categories: 分布式&微服务
+abbrlink: 28294
+date: 2021-08-29 23:48:15
 ---
 
 转载于阿里巴巴中间件高级开发工程师：[Nacos 注册中心的设计原理详解](https://www.infoq.cn/article/b*6vymikao9vakisjype)

@@ -1,9 +1,10 @@
 ---
 title: count(1)、count(*)、count(列名)的区别
 author: Marlowe
-date: 2021-08-29 10:45:44
 tags: MySQL
 categories: 数据库
+abbrlink: 59869
+date: 2021-08-29 10:45:44
 ---
 在平时开发，或者写sql过程中，没怎么注意过count(1)、count(*)、count(列名)的区别，本文，将结束一下这三者的区别。
 <!--more-->

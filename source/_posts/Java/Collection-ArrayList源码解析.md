@@ -1,12 +1,13 @@
 ---
 title: Collection-ArrayList源码解析
 author: Marlowe
-date: 2021-09-06 18:12:22
-tags: 
+tags:
   - ArrayList
   - Collection
   - 源码
 categories: Java
+abbrlink: 50397
+date: 2021-09-06 18:12:22
 ---
 
 本文转载与 Java全栈体系[Collection - ArrayList 源码解析](https://www.pdai.tech/md/java/collection/java-collection-ArrayList.html)

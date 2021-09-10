@@ -1,11 +1,12 @@
 ---
 title: Java String类为什么用final修饰？
 author: Marlowe
-date: 2021-09-10 08:13:33
-tags: 
+tags:
   - String
   - final
 categories: Java
+abbrlink: 13698
+date: 2021-09-10 08:13:33
 ---
 
 很多人都知道String类是final修饰的，但是可能不太清楚为啥用final修饰，以及用final修饰的好处。

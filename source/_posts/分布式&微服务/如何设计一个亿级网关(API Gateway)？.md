@@ -1,10 +1,11 @@
 ---
 title: 如何设计一个亿级网关(API Gateway)？
 author: Marlowe
-tags: 
+tags:
   - API
   - GateWay
 categories: 分布式&微服务
+abbrlink: 43564
 date: 2021-05-14 16:22:42
 ---
 
